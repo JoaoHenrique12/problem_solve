@@ -2,18 +2,20 @@
 
 using namespace std;
 
-int inf = 1e9 + 7;
+int INF = 1e9 + 7;
+const short NOT_SOLVED = -1;
 
 vector<bool>muro;
 int memo[10100];
 
-int min_saltos(unsigned int lajota, int saltos)
+int min_saltos(unsigned lajota, int saltos)
 {
   if( lajota == muro.size()-1 ) return 0;
-  if( lajota >= muro.size() || muro[lajota] == 0 ) return inf;
 
-  if( memo[lajota] == -1)
-    return memo[lajota] = min(inf,( 1 + min(min_saltos(lajota+1,saltos+1),min_saltos(lajota+2,saltos+1))));
+  if( lajota >= muro.size() || muro[lajota] == 0 ) return INF;
+
+  if( memo[lajota] == NOT_SOLVED)
+    return memo[lajota] = min(INF,( 1 + min(min_saltos(lajota+1,saltos+1),min_saltos(lajota+2,saltos+1))));
   else
     return memo[lajota];
 
@@ -21,10 +23,10 @@ int min_saltos(unsigned int lajota, int saltos)
 
 int main()
 {
-  unsigned int lajotas;
+  unsigned lajotas;
   bool aux;
 
-  memset(memo,-1,sizeof memo);
+  memset(memo,NOT_SOLVED,sizeof memo);
 
   cin >> lajotas;
   
@@ -33,7 +35,7 @@ int main()
     cin >> aux;
     muro.push_back(aux);
   }
-  int resp = min_saltos(0,0) == inf ? -1 : memo[0];
+  int resp = min_saltos(0,0) == INF ? NOT_SOLVED : memo[0];
   cout << resp << endl;
 
   return 0;
@@ -50,6 +52,7 @@ int main()
  * Variáveis principais: 
  * muro: vector de boolean que representa as lajotas pretas e brancas.
  * lajota: representa a posição do gato no muro.
+ * lajotas: tamanho do muro.
  * memo: array com a memorização da melhor solução para cada posição do muro.
  * saltos: quantia de saltos que falta para o gato chegar a ultima lajota do muro.
  *
