@@ -47,7 +47,7 @@ int main()
  * qual tipo de salto é otimizado para reduzir o caminho diante das regras impostas, e em seguida repetir este processo até que chegue a lajota final.
  * 
  * Para evitar um Time Limit Exceed(TLE) é crucial utilizar também um array de memorização, o qual irá guardar
- * os subproblemas( se o salto otimizado é o de uma ou duas lajotas ) já computados com a solução ótima.
+ * os subproblemas( se o salto otimizado é o de uma ou duas lajotas ).
  *
  * Variáveis principais: 
  * muro: vector de boolean que representa as lajotas pretas e brancas.
