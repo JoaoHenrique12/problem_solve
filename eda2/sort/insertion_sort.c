@@ -6,12 +6,12 @@ void printi( long* arrei, int size);
 int main()
 {
 	long aux;
-	long arrei[] = {3 , 1 , 2 , 4 , 6 , 5 , 7};
-	int size = 7;
-/*
+	long arrei[10100];
+	int size = 0;
+
 	while( scanf("%ld",&aux) != EOF )
 		arrei[size++] = aux;
-*/
+
 	insertion_sort(arrei,size);
 	
 	printi(arrei,size);
