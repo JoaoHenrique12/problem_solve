@@ -3,5 +3,5 @@ chave
 
 tipos de ordenacao:
 	bubble sort - > mais 'pesado' vai caindo
-	insertion sort - > menor vai pro comeco do array
-	selection sort - > 
+	insertion sort - > 
+	selection sort - > menor vai pro comeco do array
