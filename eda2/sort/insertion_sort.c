@@ -27,25 +27,18 @@ void printi( long* arrei, int size)
 
 void insertion_sort( long* arrei,int size )
 {
-	long key;
-	int id;
+	long key,j,aux;
 	for(size_t i = 1; i < size ; i++)
 	{
 		key = arrei[i];
-		id = i;
-		for( int j = i - 1; j >= 0 && id; j-- )
+		j = i - 1;
+
+		while( j >=0 && arrei[j] > key )
 		{
-			if( key < arrei[j] )
-			{
-				long aux = arrei[id];
-				arrei[id--] = arrei[j];
-				arrei[j] = aux;
-			}
-			else
-			{
-				arrei[id--] = key;
-				break;
-			}
+			aux = arrei[j];
+			arrei[j + 1] = arrei[j];
+			arrei[j--] = aux;
 		}
+		arrei[j + 1] = key;
 	}
 }
