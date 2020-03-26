@@ -31,19 +31,19 @@ void printi( long* arrei, int size)
 int partition(long* arrei, int lo, int hi)
 {
 	long pivot = arrei[hi];
-	int i = lo - 1; 
+	int i = lo; 
 
 	for( int j = lo; j < hi; j++ )
 	{
 		if( arrei[j] < pivot )
 		{
-			i++;
 			swap( &arrei[i] , &arrei[j] );
+			i++;
 		}
 	}
-	swap( &arrei[i + 1] , &arrei[hi] );
+	swap( &arrei[i] , &arrei[hi] );
 
-	return ( i + 1 );
+	return i;
 }
 
 void quick_sort( long* arrei, int lo , int hi )
