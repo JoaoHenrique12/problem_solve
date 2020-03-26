@@ -2,6 +2,7 @@
 
 void selection_sort( long* arrei, int size);
 void printi( long* arrei, int size);
+void swap( long* a, long* b ){ long aux = *a; *a = *b; *b = aux; }
 
 int main()
 {
@@ -20,9 +21,11 @@ int main()
 }
 void printi( long* arrei, int size)
 {
-	for(size_t i = 0; i < size; i++)
-		if( i == ( size - 1 ) ) printf("%ld\n",arrei[i]);
-		else printf("%d ",arrei[i]);
+	size_t i = 0;
+	for(i; i < size - 1; i++)
+		printf("%ld ",arrei[i]);
+
+	printf("%ld\n",arrei[i]);
 }
 
 void selection_sort( long* arrei,int size )
@@ -36,7 +39,7 @@ void selection_sort( long* arrei,int size )
 		//find min
 		for( size_t i = k + 1; i < size; i++ )
 			if( arrei[i] < min ){	min = arrei[i]; id = i; }
-		//swap
-		aux = arrei[k]; arrei[k] = arrei[id];arrei[id] = aux;
+
+		swap(&arrei[k],&arrei[id]);
 	}
 }

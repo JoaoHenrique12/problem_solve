@@ -2,6 +2,7 @@
 
 void insertion_sort( long* arrei, int size);
 void printi( long* arrei, int size);
+void swap( long* a, long* b ){ long aux = *a; *a = *b; *b = aux; }
 
 int main()
 {
@@ -20,9 +21,11 @@ int main()
 }
 void printi( long* arrei, int size)
 {
-	for(size_t i = 0; i < size; i++)
-		if( i == ( size - 1 ) ) printf("%ld\n",arrei[i]);
-		else printf("%d ",arrei[i]);
+	size_t i = 0;
+	for(i; i < size - 1; i++)
+		printf("%ld ",arrei[i]);
+
+	printf("%ld\n",arrei[i]);
 }
 
 void insertion_sort( long* arrei,int size )
@@ -35,10 +38,11 @@ void insertion_sort( long* arrei,int size )
 
 		while( j >=0 && arrei[j] > key )
 		{
-			aux = arrei[j];
-			arrei[j + 1] = arrei[j];
-			arrei[j--] = aux;
+			swap(&arrei[j+1],&arrei[j]);
+			j--;
 		}
+			
+
 		arrei[j + 1] = key;
 	}
 }

@@ -3,5 +3,11 @@ chave
 
 tipos de ordenacao:
 	bubble sort - > mais 'pesado' vai caindo
-	insertion sort - > 
-	selection sort - > menor vai pro comeco do array
+
+	insertion sort - > vai ordenando os elementos de acordo com a insercao destes,
+abrindo espaco no array e posicionando o elemento que entra corretamente.
+
+	selection sort - > menor vai pro comeco do array.
+
+	quick sort - > Usa a tecnica de	dividir para conquistar.
+	
