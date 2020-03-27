@@ -50,14 +50,14 @@ void merge(long* arrei, int lo, int m, int hi)
     if( L[i] <= R[j])
       arrei[k] = L[i++];
     else
-      arrei[k] = L[j++];
+      arrei[k] = R[j++];
 
     k++;
   }
   while( i < n1)
-    arrei[k++] = arrei[i++];
+    arrei[k++] = L[i++];
   while( j < n2)
-    arrei[k++] = arrei[j++];
+    arrei[k++] = R[j++];
 }
 
 void merge_sort( long* arrei, int lo , int hi )
