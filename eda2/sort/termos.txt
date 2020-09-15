@@ -10,4 +10,33 @@ abrindo espaco no array e posicionando o elemento que entra corretamente.
 	selection sort - > menor vai pro comeco do array.
 
 	quick sort - > Usa a tecnica de	dividir para conquistar.
-	
+	  Ingenuo vs media de 3
+
+____________________________________________________________________________________________________________________
+
+                Complexidade Computacional
+
+  aspectos avaliados:
+    - Espaco usado
+    - Tempo de execucao
+
+  Funcao de custo;
+  
+  Cencarios de entrada:
+    - Melhor caso
+    - Pior caso
+    - Caso medio
+
+  Complexidade assintotica
+    - Descreve o crescimento de funcoes
+
+    f(n) = O(g(n)) - > O e o limite superior de f(n)
+
+    pode existir uma constante m para comecar a valer o O(n) 
+
+    O(1) - > quantidade em numero fixo de vezes que executa, independente de n;
+    O(n) - > complexidade linear.
+    O(log(n)) - > logaritimica,tipicamente transforma um problema em outros menores.
+    O(nlog(n)) - > logaritimica, transforma em problemas menores e dps junta as respostas.
+    O(2^n) - > Exponencial, forca bruta.
+    O(n!) - > fatorial, forca bruta.
