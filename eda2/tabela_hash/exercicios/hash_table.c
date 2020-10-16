@@ -16,6 +16,7 @@ void insert_map(Item* mapa, Item item);
 void remove_map(Item* mapa, Item item);
 void get_map(Item* mapa, Item* item);
 void printi(Item* mapa);
+short colision(Item* mapa, int reshi);
 
 int hash(Item item);
 
@@ -50,31 +51,35 @@ int main()
 void remove_map(Item* mapa, Item item)
 {
   int pos = hash(item);
-  int cont = 0;
-  while( strcmp(mapa[pos].chave , item.chave) != TRUE )
+  size_t i = 1;
+  for(i; i < 21 && !colision(mapa,pos); i++)
   {
-    if( cont >= 20 )
-      return;
-    pos = (pos+1) % mod;
-    cont++;
+    pos =( hash(item) + i * i + 23 * i) % mod;
   }
-  strcpy(mapa[pos].chave,null_item.chave);
+
+  if( i < 21 && strcmp(mapa[pos].chave , item.chave ) == TRUE )
+      strcpy(mapa[pos].chave,null_item.chave);
 }
 
 
 void insert_map(Item* mapa, Item item)
 {
   int pos = hash(item);
-  int cont = 0;
-  while( strcmp(mapa[pos].chave , null_item.chave) != TRUE )
+  size_t i = 1;
+  for(i; i < 21 && colision(mapa,pos) && strcmp(mapa[pos].chave,item.chave) != TRUE; i++)
   {
-    if( cont >= 20 || strcmp(mapa[pos].chave,item.chave) == TRUE )
-      return;
-    pos = (pos+1) % mod;
-    cont++;
+    pos =( hash(item) + i * i + 23 * i) % mod;
   }
 
-  strcpy(mapa[pos].chave,item.chave);
+  if( i < 21 )
+    strcpy(mapa[pos].chave,item.chave);
+}
+short colision(Item* mapa, int reshi)
+{
+  short deu_merda = 1;
+  if( strcmp(mapa[reshi].chave,null_item.chave) == TRUE )
+    deu_merda = 0;
+  return deu_merda;
 }
 
 void init_map(Item* mapa)
@@ -105,7 +110,7 @@ void printi(Item* mapa)
   for( size_t i = 0; i < mod && not_null; i++)
     if( strcmp(mapa[i].chave,null_item.chave) != 0 )
     {
-      printf("hash:%d valor:%s\n",hash(mapa[i]),mapa[i].chave);
+      printf("%ld:%s\n",i,mapa[i].chave);
       not_null--;
     }
 }
