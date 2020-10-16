@@ -20,7 +20,7 @@ short colision(Item* mapa, int reshi);
 
 int hash(Item item);
 
-Item null_item = {"00\0"};
+Item null_item = {"0\0"};
 
 int main()
 {
@@ -51,16 +51,7 @@ int main()
 void remove_map(Item* mapa, Item item)
 {
   int pos = hash(item);
-  int reshi = pos;
-
-  size_t i = 1;
-  for(i; i < 20 && !colision(mapa,pos); i++)
-  {
-    pos =( reshi + i * i + 23 * i) % mod;
-  }
-
-  if( i < 20 && strcmp(mapa[pos].chave , item.chave ) == TRUE )
-      strcpy(mapa[pos].chave,null_item.chave);
+  strcpy(mapa[pos].chave,null_item.chave);
 }
 
 
@@ -83,7 +74,7 @@ void insert_map(Item* mapa, Item item)
 short colision(Item* mapa, int reshi)
 {
   short deu_merda = 1;
-  if( strcmp(mapa[reshi].chave,null_item.chave) == TRUE )
+  if( mapa[reshi].chave[0] == null_item.chave[0] )
     deu_merda = 0;
   return deu_merda;
 }
