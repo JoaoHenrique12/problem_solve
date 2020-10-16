@@ -51,13 +51,15 @@ int main()
 void remove_map(Item* mapa, Item item)
 {
   int pos = hash(item);
+  int reshi = pos;
+
   size_t i = 1;
-  for(i; i < 21 && !colision(mapa,pos); i++)
+  for(i; i < 20 && !colision(mapa,pos); i++)
   {
-    pos =( hash(item) + i * i + 23 * i) % mod;
+    pos =( reshi + i * i + 23 * i) % mod;
   }
 
-  if( i < 21 && strcmp(mapa[pos].chave , item.chave ) == TRUE )
+  if( i < 20 && strcmp(mapa[pos].chave , item.chave ) == TRUE )
       strcpy(mapa[pos].chave,null_item.chave);
 }
 
@@ -65,13 +67,17 @@ void remove_map(Item* mapa, Item item)
 void insert_map(Item* mapa, Item item)
 {
   int pos = hash(item);
+  int reshi = pos;
+
   size_t i = 1;
-  for(i; i < 21 && colision(mapa,pos) && strcmp(mapa[pos].chave,item.chave) != TRUE; i++)
+  for(i; i < 20 && colision(mapa,pos) ; i++)
   {
-    pos =( hash(item) + i * i + 23 * i) % mod;
+    if(strcmp(mapa[pos].chave,item.chave) == TRUE)
+      return;
+    pos = ( reshi + i * i + 23 * i) % mod;
   }
 
-  if( i < 21 )
+  if( i < 20 )
     strcpy(mapa[pos].chave,item.chave);
 }
 short colision(Item* mapa, int reshi)
@@ -92,7 +98,7 @@ int hash(Item item)
 {
   int h = 0, fator = 19;
   for(size_t i = 0; item.chave[i] != '\0'; i++)
-    h = item.chave[i] * (i+1);
+    h += item.chave[i] * (i+1);
 
   h = (h*fator) % mod;
 
