@@ -2,6 +2,8 @@
 #include<stdlib.h>
 #include<string.h>
 
+#define  TRUE 0
+
 #define mod 101
 
 typedef struct
@@ -47,31 +49,30 @@ int main()
 }
 void remove_map(Item* mapa, Item item)
 {
-  return;
+  int pos = hash(item);
+  int cont = 0;
+  while( strcmp(mapa[pos].chave , item.chave) != TRUE )
+  {
+    if( cont >= 20 )
+      return;
+    pos = (pos+1) % mod;
+    cont++;
+  }
+  strcpy(mapa[pos].chave,null_item.chave);
 }
 
-void printi(Item* mapa)
-{
-  int not_null = 0;
-  for( size_t i = 0; i < mod; i++)
-    if( strcmp(mapa[i].chave,null_item.chave) != 0 )
-      not_null++;
-
-  printf("%d\n",not_null);
-
-  for( size_t i = 0; i < mod && not_null; i++)
-    if( strcmp(mapa[i].chave,null_item.chave) != 0 )
-    {
-      printf("hash:%d valor:%s\n",hash(mapa[i]),mapa[i].chave);
-      not_null--;
-    }
-}
 
 void insert_map(Item* mapa, Item item)
 {
   int pos = hash(item);
-  while( strcmp(mapa[pos].chave , null_item.chave) != 0 )
+  int cont = 0;
+  while( strcmp(mapa[pos].chave , null_item.chave) != TRUE )
+  {
+    if( cont >= 20 || strcmp(mapa[pos].chave,item.chave) == TRUE )
+      return;
     pos = (pos+1) % mod;
+    cont++;
+  }
 
   strcpy(mapa[pos].chave,item.chave);
 }
@@ -91,4 +92,20 @@ int hash(Item item)
   h = (h*fator) % mod;
 
   return h;
+}
+void printi(Item* mapa)
+{
+  int not_null = 0;
+  for( size_t i = 0; i < mod; i++)
+    if( strcmp(mapa[i].chave,null_item.chave) != 0 )
+      not_null++;
+
+  printf("%d\n",not_null);
+
+  for( size_t i = 0; i < mod && not_null; i++)
+    if( strcmp(mapa[i].chave,null_item.chave) != 0 )
+    {
+      printf("hash:%d valor:%s\n",hash(mapa[i]),mapa[i].chave);
+      not_null--;
+    }
 }
