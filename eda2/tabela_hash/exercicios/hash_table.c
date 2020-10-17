@@ -20,7 +20,7 @@ short colision(Item* mapa, int reshi);
 
 int hash(Item item);
 
-Item null_item = {"0\0"};
+Item null_item = {"\0"};
 
 int main()
 {
@@ -37,7 +37,12 @@ int main()
     scanf("%d\n",&n2);
     while(n2--)
     {
+      aux.chave[0] = '\0';
       scanf("%[^:]:%s\n",op,aux.chave);
+
+      if( aux.chave[0] == '\0')
+        continue;
+
       if( op[0] == 'A' )
         insert_map(tab,aux);
       else
@@ -53,7 +58,7 @@ void remove_map(Item* mapa, Item item)
   int pos = hash(item);
   int reshi = pos;
 
-  for(size_t i = 1; i < 20 ;i++)
+  for(size_t i = 0; i < 20 ;i++)
   {
     if(strcmp(mapa[pos].chave,item.chave) == TRUE)
     {
@@ -68,25 +73,20 @@ void insert_map(Item* mapa, Item item)
 {
   int pos = hash(item);
   int reshi = pos;
-  int pi = reshi ;
-  short flag = 1;
+  int pi = -1 ;
 
-  size_t i = 1;
-  for(i; i < 20; i++)
+  for(size_t i = 0; i < 20; i++)
   {
-    if(flag)
-      if(!colision(mapa,pos))
-      {
-        pi = pos;
-        flag = 0;
-      }
+    if( !colision(mapa,pos) && pi == -1 )
+      pi = pos;
 
     if(strcmp(mapa[pos].chave,item.chave) == TRUE)
       return;
+
     pos = ( reshi + i * i + 23 * i) % mod;
   }
 
-  if( flag == 0 )
+  if( pi != -1 )
     strcpy(mapa[pi].chave,item.chave);
 }
 short colision(Item* mapa, int reshi)
@@ -122,10 +122,10 @@ void printi(Item* mapa)
 
   printf("%d\n",not_null);
 
-  for( size_t i = 0; i < mod && not_null; i++)
+  for( int i = 0; i < mod && not_null; i++)
     if( mapa[i].chave[0] != null_item.chave[0] )
     {
-      printf("%ld:%s\n",i,mapa[i].chave);
+      printf("%d:%s\n",i,mapa[i].chave);
       not_null--;
     }
 }
