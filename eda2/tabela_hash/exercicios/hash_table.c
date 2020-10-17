@@ -14,9 +14,7 @@ typedef struct
 void init_map(Item* mapa);
 void insert_map(Item* mapa, Item item);
 void remove_map(Item* mapa, Item item);
-void get_map(Item* mapa, Item* item);
 void printi(Item* mapa);
-short colision(Item* mapa, int reshi);
 
 int hash(Item item);
 
@@ -36,7 +34,6 @@ int main()
     while(n2--)
     {
       scanf("%s\n",aux.chave);
-
 
       if( aux.chave[0] == 'A' )
       {
@@ -61,12 +58,12 @@ void remove_map(Item* mapa, Item item)
 
   for(size_t i = 0; i < 20 ;i++)
   {
+    pos = ( reshi + i *( 23 + i) ) % mod;
     if(strcmp(mapa[pos].chave,item.chave) == TRUE)
     {
       mapa[pos] = null_item;
       return;
     }
-    pos = ( reshi + i *( 23 + i) ) % mod;
   }
 }
 
@@ -78,24 +75,18 @@ void insert_map(Item* mapa, Item item)
 
   for(size_t i = 0; i < 20; i++)
   {
-    if( !colision(mapa,pos) && pi == -1 )
+    pos = ( reshi + i *( 23 + i) ) % mod;
+
+    if( !strlen(mapa[pos].chave) && pi == -1 )
       pi = pos;
 
     if(strcmp(mapa[pos].chave,item.chave) == TRUE)
       return;
 
-    pos = ( reshi + i *( 23 + i) ) % mod;
   }
 
   if( pi != -1 )
     strcpy(mapa[pi].chave,item.chave);
-}
-short colision(Item* mapa, int reshi)
-{
-  short deu_merda = 1;
-  if( mapa[reshi].chave[0] == null_item.chave[0] )
-    deu_merda = 0;
-  return deu_merda;
 }
 
 void init_map(Item* mapa)
@@ -118,15 +109,11 @@ void printi(Item* mapa)
 {
   int not_null = 0;
   for( size_t i = 0; i < mod; i++)
-    if( strlen(mapa[i].chave) != 0 )
+    if( strlen(mapa[i].chave) )
       not_null++;
 
   printf("%d\n",not_null);
-
-  for( int i = 0; i < mod && not_null; i++)
+  for( int i = 0; i < mod ; i++)
     if( strlen( mapa[i].chave ) )
-    {
       printf("%d:%s\n",i,mapa[i].chave);
-      not_null--;
-    }
 }
