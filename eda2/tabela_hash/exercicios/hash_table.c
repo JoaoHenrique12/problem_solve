@@ -8,7 +8,7 @@
 
 typedef struct
 {
-  char chave[16];
+  char chave[22];
 }Item;
 
 void init_map(Item* mapa);
@@ -26,8 +26,6 @@ int main()
 {
   Item tab[mod];
   Item aux;
-  char op[4];
-
 
   int n,n2;
   scanf("%d\n",&n);
@@ -37,16 +35,19 @@ int main()
     scanf("%d\n",&n2);
     while(n2--)
     {
-      aux.chave[0] = '\0';
-      scanf("%[^:]:%s\n",op,aux.chave);
+      scanf("%s\n",aux.chave);
 
-      if( aux.chave[0] == '\0')
-        continue;
 
-      if( op[0] == 'A' )
+      if( aux.chave[0] == 'A' )
+      {
+        strcpy(aux.chave , aux.chave + 4);
         insert_map(tab,aux);
+      }
       else
+      {
+        strcpy(aux.chave , aux.chave + 4);
         remove_map(tab,aux);
+      }
     }
     printi(tab);
   }
@@ -62,10 +63,10 @@ void remove_map(Item* mapa, Item item)
   {
     if(strcmp(mapa[pos].chave,item.chave) == TRUE)
     {
-      strcpy(mapa[pos].chave,null_item.chave);
+      mapa[pos] = null_item;
       return;
     }
-    pos = ( reshi + i * i + 23 * i) % mod;
+    pos = ( reshi + i *( 23 + i) ) % mod;
   }
 }
 
@@ -83,7 +84,7 @@ void insert_map(Item* mapa, Item item)
     if(strcmp(mapa[pos].chave,item.chave) == TRUE)
       return;
 
-    pos = ( reshi + i * i + 23 * i) % mod;
+    pos = ( reshi + i *( 23 + i) ) % mod;
   }
 
   if( pi != -1 )
@@ -117,13 +118,13 @@ void printi(Item* mapa)
 {
   int not_null = 0;
   for( size_t i = 0; i < mod; i++)
-    if( strcmp(mapa[i].chave,null_item.chave) != 0 )
+    if( strlen(mapa[i].chave) != 0 )
       not_null++;
 
   printf("%d\n",not_null);
 
   for( int i = 0; i < mod && not_null; i++)
-    if( mapa[i].chave[0] != null_item.chave[0] )
+    if( strlen( mapa[i].chave ) )
     {
       printf("%d:%s\n",i,mapa[i].chave);
       not_null--;
