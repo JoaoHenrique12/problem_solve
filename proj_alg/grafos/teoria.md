@@ -87,7 +87,7 @@ complexidade computacional: O(n + m)
 - Roda um BFS a partir de u em G<sup>R</sup>
 - Retornar true se u atinge todos os nos em ambos BFS
 
-O algoritmo para obter [Grafo reverso](cpp/rev_graph.cpp) G<sup>R</sup> tambem tem complexidade O(n + m)
+O algoritmo para obter Grafo reverso G<sup>R</sup> tambem tem complexidade O(n + m)
 
 ## Directed Acyclic Graph (DAG)
 
@@ -138,3 +138,73 @@ Atualizacao: O(1)
     - Remove v de s
     - Decrementa count de todas as arestas de v -> w
 ```
+## Strongly connected components (SCC)
+
+Para criar exemplos para testar ideias em grafos fracamente conectados faca um ciclo (a, b, c) conecte o ciclo com uma aresa em outro ciclo (d,e,f).
+
+G~ Grafo gerado pelos conjuntos conectados
+![](img/graph_scc.png)
+
+sink node - > no so recebe aresta
+
+source node -> no so tem aresta origem 
+
+### DFS Numbering
+
+DFS com 2 vetores auxiliares para numerar a entrada e saida da chamada de funcao para cada no.
+
+```
+Global time
+
+DFS(G)
+    time = 1
+    for n in G
+        if visited[n] 
+            DFS_Visit(G,n)
+DFS_Visit(G,u)
+   visited[u] = true
+   pre[u] = time++
+   for w in G[u]
+        if visited[w]
+            InserirArestaArvore(u,w)
+            DFS_Visit(G,w)
+    pos[u] = time++
+```
+
+Propriedade: Se C e D sao componentes fortemente conectados e existe uma aresta de um no de C para um no de D, entao o maior post() em C é maior que o maior post() em D.
+
+Colorario: O no de G com maior post() é um no pertencente a um source node de G~.
+
+Observação 1: Componentes fortemente conectados em G e G<sup>R</sup> são os mesmos.
+
+Observação 2: Se um no pertence a um source node de G~ entao ele pertence a um sink node em (G<sup>R</sup>)~
+
+### SCC algorithm
+
+1. DFS(G) computar post[u]
+1. Computar G<sup>R</sup>
+1. DFS(G<sup>R</sup>) na ordem decrescente post[v]
+1. Disponibilizar os vertices de cada arvore como um SCC
+
+## Dijkstra
+
+- Manter conjunto de nos explorados S, que tem a distancia d(u) minima entre u - > w.
+- Inicializar conjunto de explorados S = { s }, d(s) = 0.
+- Repetidamente escolher o no nao explorado v que minimize a distancia.
+
+## Minimum Spanning Tree
+
+Arvore geradora minima: dado um grafo conectado ponderado uma MST é um subconjunto de arestas tais que T é MST em que a soma do peso das arestas é minimizado.
+
+Algoritmos gananciosos:
+- Kruskal's 
+
+    Comece com T = {}. Considere as arestas em ordem ascendente de peso. Insira uma aresta em T a nao ser que ao fazer isto um ciclo seja criado.
+
+- Reverse-Delete 
+
+    Comece com T = G. Conseidere as arestas em ordem decrescente de peso. Delete a aresta de T a nao ser que fazendo isto T seja um grafo disconectado.
+
+- Prim's
+
+    Comece em um no qualquer, insira em T de maneira gananciosa. Em cada passo adicione a aresta mais barata em T ate o ponto final.
