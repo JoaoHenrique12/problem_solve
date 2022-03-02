@@ -48,3 +48,17 @@ Codigo ganancioso ideal:
 Codigo ganancioso:
  - Ordenar por deadline
  - Resolver tarefas na lista e contar o atraso positivo.
+
+ ## Knapsack
+
+Se assumir que os itens sao divisiveis e so pegar o item com maior rendimento e usar o algoritmo ganancioso.
+
+## Coin Change
+
+Selecionar a maior moeda.
+
+## Selecting Breakpoints
+
+![select_breakpoints](img/selectingBreakpoints.png)
+
+Ir o mais longe o possivel antes de abastecer.
