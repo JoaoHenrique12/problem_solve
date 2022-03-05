@@ -62,3 +62,12 @@ Selecionar a maior moeda.
 ![select_breakpoints](img/selectingBreakpoints.png)
 
 Ir o mais longe o possivel antes de abastecer.
+
+## Huffman Code
+
+Compressao sem perdas.
+
+Propriedades:
+- Gera codigo prefixo otimo
+- Barato para gerar os codigos
+- Barato para codificar e decodificar
