@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 
 int partition(int* arrei, int lo, int hi);
 void quick_select( int* arrei, int lo, int hi,int k);
@@ -8,23 +9,15 @@ void printi( int* arrei, size_t size);
 
 #define comp(a, b) do { if( a < b ) swap(a,b); } while(0)
 
-int arrei[1000000000];
-
 int main()
 {
-  long aux;
-	size_t size = 0;
-  //scanf("%lu\n",&size);
+  int arrei[] = { 12, 3, 5, 7, 4, 19, 26 };
+  int k = 3;
+	size_t size = sizeof(arrei)/sizeof(arrei[0]);
 
-  //for(size_t i = 0; i < size; i++)
-  //  scanf("%d",&arrei[i]);
-
-	while( scanf("%ld",&aux) != EOF )
-		arrei[size++] = aux;
-
-	quick_select(arrei , 0 , size - 1, size/2);
-	
+	quick_select(arrei , 0 , size - 1, k);
 	printi(arrei,size);
+  printf("%d",arrei[k]);
 
 	return 0;
 }
