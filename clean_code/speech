@@ -1,0 +1,48 @@
+Regra de nome de variaviel:
+  - porque a variavel existe
+  - como e usado
+  - o que faz. 
+  -> se uma variavel precisa de um comentario isto implica no fato de que o nome e ruim.
+
+  - Evite usar nomes semelhantes para variaveis diferentes.
+  - Palavras vagas, muito comuns, tambem nao revelam nada sobre o objeto em questao.
+  - Nao usar nameString, ou nameVar ou testeFunction!!!
+  - Use nomes pronunciaveis.
+  - O tamanho do nome deve ser proporcional ao tamanho do escopo.
+  - Use nomes passiveis de busca, nomes grandes se sobressaem aos menores.
+
+  - Nao faca nomes de ze comedia. HolyHandGrenade -> DeleteItems.
+  - Sem trocadilhos.
+
+Nomes de classes: 
+  substantivo -> Cliente, paginaWiki, analiseEndereco.
+
+Nomes metodos:
+  verbos -> postarPagamento, excluirPagina, salvar.
+  Quando construtores estiverem sobrecarregados, use metodos factory estaticos que descrevam os parametros.
+
+Lexico consistente:
+  As palavras pagar, recuperar e obter sao semelhantes portanto selecione uma e use ela para funcoes com acoes semelhantes.
+
+Contexto:
+  Adicionando contexto num conjunto de variaveis:
+    colocar prefixo, exemplo: clientFirstName,clientLastName,clientAddres
+
+  Nao adicione contexto desnecessariamente.
+--------------------------------------------
+Funcoes:
+  - Devem ser pequenas.
+  - Nao ultrapasse as 20 linhas. // Talvez eu passe, na moral 20 eh muito pouco.
+  - Nivel de Endentacao dentro de uma funcao deve ser de no maximo 1 ou 2.
+  - Faca apenas uma coisa por funcao. Uma funcao faz mais de uma coisa se vc consegue extrair outra funcao dela.
+  - Secoes dentro de uma funcao indicam que esta faz mais de uma coisa.
+  - Mantenha um nivel de abstracao por funcao.
+  - Se sua funcao faz algo "escondida", vc ta fazendo merda.
+  - Se sua funcao faz e responde algo, vc ta fazendo merda.
+  - Use exceptions ao inves de retornar o erro no callback da funcao.
+
+  Parametros:
+    - Quantidade ideal -> 0.
+    - Para ter mais que 3 deve existir uma boa justificativa.
+--------------------------------------------
+Comentarios:
