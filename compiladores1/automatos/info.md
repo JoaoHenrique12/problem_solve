@@ -16,3 +16,7 @@ Automatos deterministicos respeitam as regras:
 - Unico estado inicial
 - Faz no maximo uma transicao de saida por estado(simbolo)
 - Cada transicao consome exatamente 1 simbolo
+
+# Construcao de Thompson
+
+![img4](img/tompson.png)
