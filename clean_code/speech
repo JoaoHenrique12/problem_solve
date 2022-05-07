@@ -3,17 +3,14 @@ Regra de nome de variaviel:
   - como e usado
   - o que faz. 
   -> se uma variavel precisa de um comentario isto implica no fato de que o nome e ruim.
-
   - Evite usar nomes semelhantes para variaveis diferentes.
   - Palavras vagas, muito comuns, tambem nao revelam nada sobre o objeto em questao.
   - Nao usar nameString, ou nameVar ou testeFunction!!!
   - Use nomes pronunciaveis.
   - O tamanho do nome deve ser proporcional ao tamanho do escopo.
   - Use nomes passiveis de busca, nomes grandes se sobressaem aos menores.
-
   - Nao faca nomes de ze comedia. HolyHandGrenade -> DeleteItems.
   - Sem trocadilhos.
-
 Nomes de classes: 
   substantivo -> Cliente, paginaWiki, analiseEndereco.
 
@@ -38,7 +35,7 @@ Funcoes:
   - Secoes dentro de uma funcao indicam que esta faz mais de uma coisa.
   - Mantenha um nivel de abstracao por funcao.
   - Se sua funcao faz algo "escondida", vc ta fazendo merda.
-  - Se sua funcao faz e responde algo, vc ta fazendo merda.
+  - Se sua funcao faz e responde algo, vc ta fazendo merda.// Por isso stack.pop(),stack.top(); sao funcoes 'diferentes' ao inves de top() ja retirar o elemento.
   - Use exceptions ao inves de retornar o erro no callback da funcao.
 
   Parametros:
@@ -46,3 +43,50 @@ Funcoes:
     - Para ter mais que 3 deve existir uma boa justificativa.
 --------------------------------------------
 Comentarios:
+"Nao insira comentarios em um codigo ruim, reescreva-o."
+"O uso de comentarios geralmente revela nossa limitacao em nos expressar atraves do codigo"
+"Comentarios tem uma tendendia a mentira"
+  - Minimize os comentarios.
+Tipos de comentarios:
+  - Comentario ruim
+  - Comentario redundante
+  - Murmurio
+  - Comentarios enganadores
+  - Comentarios longos
+  - Comentarios ruidosos & Ruidos assustadores.
+  - Marcadores de posicao
+        // Acoes /////////////////////////
+  - Comentarios ao lado de chaves de fechamento
+        while(True){
+          lorem
+          lorem
+        } // while
+  - Creditos e autoria, deixa isso para o GIT.
+  - Explicacao do codigo em comentario.
+  - Comentarios com HTML.
+  - Informacoes nao locais.
+  - Informacoes excessivas.
+  - Conexoes nada obvias.
+  - Cabecalhos de funcoes.
+--------------------------------------------
+Formatacao:
+Vertical:
+  - A metafora do jornal
+    Deixe em cima os codigos com mais significado, ao descer no arquivo os detalhes sao mostrados.
+  - Os conceitos intimamente relacionados devem ficar juntos verticalmente.
+Horizontal:
+  - Media de 45 caracteres em projetos analizados pelo livro.
+  - Mantenha linhas curtas, evite a recorrencia de chegar a 150 ou 120 caracteres.
+  - Para mim cerca de 100 como maximo deve ser o estipulado.
+Regras de equipe, siga-as. E mais facil ler um codigo uniforme.
+--------------------------------------------
+Objetos e Estruturas de dados:
+  - Evite criar hibridos entre estrutura de dados e objetos.
+  - Lei de Demeter; // Fale apenas com conhecidos.
+  - Carrinhos de trem ( altamente acoplado )
+  - Hibridos; evite estas estruturas, revela que o autor estava perdido.
+  - Estruturas ocultas.
+Objetos de transferencia de dados (DOT):
+  - Classe com variaveis publicas e nenhuma funcao.
+  - Uteis para comunicar com BD, e analise sintatica advinda de sockets.
+--------------------------------------------
