@@ -90,3 +90,53 @@ Objetos de transferencia de dados (DOT):
   - Classe com variaveis publicas e nenhuma funcao.
   - Uteis para comunicar com BD, e analise sintatica advinda de sockets.
 --------------------------------------------
+Tratamento de Erros
+  - Comece pelo try catch finally
+  - Forneca excecoes com contexto
+  - Nao retorne null
+  - Nao passe null como parametro
+--------------------------------------------
+Limites
+  - Nao eh obrigacao testar codigos de terceiros, mas e uma boa ideia testar o que usamos.
+  - Ler ou integrar codigos de terceiros nao e tarefa facil.
+  - O uso de codigo que nao existe ainda.
+--------------------------------------------
+Testes de Unidade
+  - TDD, 3 leis que ignoro por enquanto.
+  - Os testes vao sendo alterados conforme o codigo em producao evolui.
+  - Inseguranca na producao de novas funcionalidades caso nao existam testes.
+  - Testes limpos: legibilidade,legibilidade,legibilidade.
+  - Um unico conceito por teste.
+  - Fast
+  - Independent
+  - Repeatable (vc deve ser capaz de executar os testes em qualquer lugar)
+  - Self-validating ( precisar de validar na mao o teste por conta de situacao especifica nao e uma boa)
+  - Timely (crie os testes antes de jogar o codigo para producao)
+--------------------------------------------
+Classes
+  - Ordem: constantes, variaveis, funcoes.
+  - Classes devem ser pequenas.
+  - Uma classe Uma responsabilidade.
+  - Sem nomes ambiguos ou genericos. 
+  - Escrever uma breve descricao da classe, cerca de 25 palavras.
+  - Ter mais classes pequenas e melhor que ter duas classes gigantes (pag. 140)
+--------------------------------------------
+Sistemas
+  - Separe a construcao e o uso de um sistema.
+  - Separacao na MAIN, FACTORIES, INJECAO DE DEPENDENCIA.
+  - Desenvolvimento gradual ( implementar com os fatos de hoje )
+--------------------------------------------
+Emergencia
+  - Regras do projeto simples
+    - Testes 
+      "Um sistema que nao pode ser testado nao deve ser implementado"
+    - Sem duplicacao de codigo
+    - Expressar proposito do programador
+    - Minimizar classes e metodos
+--------------------------------------------
+Concorrencia
+  - Produtor consumidor
+  - Leitor escritor
+  - Problema dos filosofos
+--------------------------------------------
+Refinamento sucessivo
