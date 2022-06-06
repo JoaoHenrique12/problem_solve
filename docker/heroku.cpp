@@ -4,7 +4,10 @@ heroku login
 // Dentro de um repositorio git
 heroku create
 
-git push heroku main
+heroku git:clone -a csgo-connections
+
+git push heroku master
+//-------------
 heroku ps:scale web=1
 heroku open
 
