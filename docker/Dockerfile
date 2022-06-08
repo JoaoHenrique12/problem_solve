@@ -1,11 +1,11 @@
-#portaMinha:portaImagem
+# Exec Dockerfile
+  #portaMinha:portaImagem
 docker run -d -p 8080:80 docker/getting-started
-
 -d -> Deixa em back ground.
-
 # Variavel de ambiente
 -e MYSQL_ROOT=meuRoot -e
 
+# ----- Docker container comands
 docker container help
 
 docker stop 5bb95ca56732
@@ -47,6 +47,8 @@ docker volume prune // remove todos volumes nao usados, cuidado.
 docker network
 
 # ------------- docker-compose.yml ------------------------------
+  # exec yml
+docker compose up -d
 
-# exec yml
-docker compose up
+# -------- Copiando arquivos entre o container e a maquina ------
+docker cp id_container:/path ~/path_minha_maquina
