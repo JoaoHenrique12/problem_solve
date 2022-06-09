@@ -52,3 +52,7 @@ docker compose up -d
 
 # -------- Copiando arquivos entre o container e a maquina ------
 docker cp id_container:/path ~/path_minha_maquina
+
+# ------- Por que o container esta morrendo apos a execucao ?----
+  # tem que adicionar um entry point.
+https://devopscube.com/keep-docker-container-running/
