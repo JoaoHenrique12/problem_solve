@@ -1,7 +1,7 @@
 import psycopg2
 import time
 
-conn = psycopg2.connect(host="172.20.0.3",dbname="metalgear", user="postgres", password="postgres")
+conn = psycopg2.connect(host="172.20.0.2",dbname="metalgear", user="postgres", password="postgres")
 cur = conn.cursor()
 while True:
     cur.execute("select * from providers;")

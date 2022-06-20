@@ -24,6 +24,10 @@ services:
       - postgres
     networks:
       - spider_web
+    volumes:
+      - type: bind
+        source: $HOST/python
+        target: /MetalGearSolid
 networks:
   spider_web:
 
