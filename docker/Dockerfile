@@ -48,7 +48,17 @@ docker network
 
 # ------------- docker-compose.yml ------------------------------
   # exec yml
-docker compose up -d
+  docker compose build --no-cache
+  docker compose up -d
+
+# config yalm network  172.20.X.X
+networks:
+  - nome_network
+
+networks:
+  nome_network:
+    driver: bridge
+    external: true
 
 # -------- Copiando arquivos entre o container e a maquina ------
 docker cp id_container:/path ~/path_minha_maquina
