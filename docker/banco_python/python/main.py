@@ -8,5 +8,7 @@ while True:
     obj = cur.fetchall()
     for o in obj:
         print(o)
+    n = input("Digite seu nome")
+    print(f"Sim {n}, deu certo")
     time.sleep(10)
 conn.close()
