@@ -93,3 +93,36 @@ Dom(Ai) -> dominio do atributo.
 
 Restricao de integridade da entidade: PK nao nula.
 Restricao de integridade referencial: FK deve ser compativel.
+# Normalizacao
+
+## 1FN
+
+- Atributos Atomicos, ou seja os multivalorados viram uma tabela.
+
+## 2FN
+
+Existe uma tabela com colunas que seriam de duas ou mais tabelas, e as chaves compostas podem indicar as novas tabelas.
+Essa normalizacao fala se a sua tabela ta 'grande' de mais e armazenando valores que provavelmente vao ficar null em algum momento.
+Solucao: quebrar esta tabela em 2 ou mais.
+
+- Baseado no conceito de dependencia funcional total.
+- Cada atributo nao chave depende da PK da relacao.
+- Se houver dependencia parcial, cria uma tabela nova com os dados.
+
+## 3FN
+
+- Baseado no conceito de dependencia transitiva.
+- Acontece quando um atributo nao chave e determinado por outro atributo nao chave (ou conjunto).
+
+Exemplo: 
+
+tbl\_venda {notaFiscal,codVendedor,nomeVendedor,codProduto,qtdeVendida}
+
+Nome do vendedor depente tambem de codigo do vendedor, entao joga eles numa tabela e deixa na
+tabela atual so o codVendedor.
+
+## FNBC
+
+- Duas ou mais chaves candidatas.
+- Chaves candidatas sao compostas.
+- Elas tem superposicao de atributos.
