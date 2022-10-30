@@ -1,9 +1,15 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<pthread.h>
+#include<semaphore.h>
+#include<unistd.h>
 
 #define MAX_TICKETS 100
 #define INVALID_TICKET -1
+#define MAX_THREADS 5
+
+sem_t mutex;
+sem_t can_get_ticket;
 
 size_t point_tickets = 0;
 int tickets[MAX_TICKETS];
@@ -28,9 +34,30 @@ void return_ticket(int ret)
   tickets[point_tickets++] = ret;
 }
 
+void consumer(int mid)
+{
+  for( size_t i = 0; i < 20; i++ )
+  {
+    int tk = get_ticket();
+    printf("Thread %d, ticket %d\n",mid,tk);
+    sleep(1);
+  }
+}
 
 int main()
 {
+  sem_init(&mutex,0,1);
+  sem_init(&can_get_ticket,0,MAX_TICKETS);
+
+  init_tickets();
+
+  pthread_t tid[MAX_THREADS];
+  
+  for(size_t i = 0; i < MAX_THREADS; i++)
+    pthread_create(&tid[i], NULL, (void*) consumer, (void*) i ); 
+
+  for(size_t i = 0; i < MAX_THREADS; i++)
+    pthread_join(tid[i], NULL); 
 
   return 0;
 }
