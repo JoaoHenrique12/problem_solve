@@ -23,15 +23,24 @@ void init_tickets()
 
 int get_ticket()
 {
-  if( point_tickets < 0 )
-    return INVALID_TICKET;
+  sem_wait(&can_get_ticket);
+  sem_wait(&mutex);
 
-  return tickets[--point_tickets];
+  int tk = tickets[--point_tickets];
+
+  sem_post(&mutex);
+
+  return tk;
 }
 
 void return_ticket(int ret)
 {
+  sem_wait(&mutex);
+
   tickets[point_tickets++] = ret;
+
+  sem_post(&mutex);
+  sem_post(&can_get_ticket);
 }
 
 void consumer(int mid)
@@ -40,7 +49,8 @@ void consumer(int mid)
   {
     int tk = get_ticket();
     printf("Thread %d, ticket %d\n",mid,tk);
-    sleep(1);
+    //return_ticket(tk);
+    //sleep(1);
   }
 }
 
@@ -59,6 +69,7 @@ int main()
   for(size_t i = 0; i < MAX_THREADS; i++)
     pthread_join(tid[i], NULL); 
 
+  printf("point_tickets: %ld\n",point_tickets);
   return 0;
 }
 
