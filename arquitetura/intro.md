@@ -67,3 +67,13 @@ Lexico = (Termo, definicao, ocorrencia do simbolo na aplicacao)
 ### Prototype
 
 - Criar o prototipo e validar.
+
+## Backlog do Produto
+
+### Priorizando itens
+
+MOSCW
+- M < Must have >
+- S < Should have >
+- C < Could have >
+- W < Won't have this time >
