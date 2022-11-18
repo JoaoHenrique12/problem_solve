@@ -1,0 +1,18 @@
+Comandos do git mais avançados e breve explicação deles.
+
+git log --all --decorate --oneline --graph
+  -> Mostra a árvore dos commits.
+
+git reflog 
+  -> Mostra hashes de comits e histórico de ações realizadas no
+repositório. Se vc está usando este comando é porque provávelmente fez
+cagada.
+
+git rebase -i main
+ -> Vc quer pegar os commits da main para a sua branch atual, ex: feature.
+Ele é próximo ao git merge, mas mantém os commits alinhados e a branch 
+'limpa'. Quando não fazer rebase ? Não faça em branchs públicas, como
+master, deploy, ...
+
+git reset --softt --mixed --hard
+  -> É uma espécie de checkout
