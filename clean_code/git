@@ -1,5 +1,9 @@
 Comandos do git mais avançados e breve explicação deles.
 
+
+git show HEAD~1:redes/projeto/server.c
+  -> Mostra todo o arquivo do commit anterior.
+
 git log --all --decorate --oneline --graph
   -> Mostra a árvore dos commits.
 
@@ -16,3 +20,4 @@ master, deploy, ...
 
 git reset --softt --mixed --hard
   -> É uma espécie de checkout
+
