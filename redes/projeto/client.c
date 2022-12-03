@@ -14,8 +14,12 @@
 
 #define MAX_MSG 100
 
+typedef struct package {
+  int check_sum;
+  char msg[MAX_MSG];
+}Package;
 
-// IP PORTA MENSAGEM
+
 void start_client(int* sd)
 {
   struct sockaddr_in ladoCli;
@@ -38,7 +42,7 @@ void start_client(int* sd)
     { printf("Nao pode fazer um bind da porta\n"); exit(1); }
 }
 
-void send_server(int sd, char* ip, int porta,char* msg)
+void send_server(int sd, char* ip, int porta,Package* pkg)
 {
   struct sockaddr_in ladoServ;
   /* Preenchendo as informacoes de identificacao do servidor */
@@ -46,21 +50,23 @@ void send_server(int sd, char* ip, int porta,char* msg)
   ladoServ.sin_addr.s_addr = inet_addr(ip);
   ladoServ.sin_port 	   = htons(porta);
 
-  int rc = sendto(sd, msg, strlen(msg), 0,(struct sockaddr *) &ladoServ, sizeof(ladoServ));
+  int rc = sendto(sd, pkg, sizeof(Package), 0,(struct sockaddr *) &ladoServ, sizeof(ladoServ));
   if(rc<0) 
     { printf("Nao pode enviar os dados.\n"); close(sd); exit(1); }
 
-  printf("Enviando mensagem:%s\n",msg);
+  printf("Enviando mensagem:%s\n",pkg->msg);
 }
 
 int main() {
   int sd;
-  char msg[MAX_MSG];
+  Package pkg;
+
   printf("Digite a mensagem: ");
-  scanf("%s",msg);
+  scanf("%s",pkg.msg);
+  pkg.check_sum = 27;
 
   start_client(&sd);
-  send_server(sd,"127.0.0.1",3030,msg);
+  send_server(sd,"127.0.0.1",3030,&pkg);
 
   return 0;
 }

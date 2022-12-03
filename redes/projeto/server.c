@@ -14,6 +14,11 @@
 
 #define MAX_MSG 100
 
+typedef struct package {
+  int check_sum;
+  char msg[MAX_MSG];
+}Package;
+
 void bind_server(int* sd, int port)
 {
   struct sockaddr_in	endServ;
@@ -35,17 +40,17 @@ void bind_server(int* sd, int port)
 
 }
 
-void listen_server(int sd,char* msg)
+void listen_server(int sd,Package* pkg)
 {
   socklen_t		tam_Cli;
   struct sockaddr_in	endCli;
 
-  memset(msg,0x0,MAX_MSG);
+  memset(pkg->msg,'T',MAX_MSG);
   tam_Cli = sizeof(endCli);
   
-  int n = recvfrom(sd, msg, MAX_MSG, 0, (struct sockaddr *) &endCli, &tam_Cli);
+  int n = recvfrom(sd, pkg, sizeof(Package), 0, (struct sockaddr *) &endCli, &tam_Cli);
   if(n<0) 
-    { printf("Nao pode receber dados \n"); return;} 
+    printf("Nao pode receber dados \n"); 
     
   return;
 }
@@ -55,12 +60,12 @@ int main() {
 
   bind_server(&sd,3030);
 
-  char msg[MAX_MSG];
+  Package pkg;
 
   while(1)
   {
-    listen_server(sd,msg);
-    printf("Mensagem na main:%s\n",msg);
+    listen_server(sd,&pkg);
+    printf("Mensagem na main:%s, checksum:%d\n",pkg.msg,pkg.check_sum);
   }
 
   return 0;
