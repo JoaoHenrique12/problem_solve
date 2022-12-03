@@ -14,17 +14,11 @@
 
 #define MAX_MSG 100
 
-int sd, rc, i;
-struct sockaddr_in ladoCli;
-struct sockaddr_in ladoServ;
 
 // IP PORTA MENSAGEM
-void start_client(char* ip, int porta)
+void start_client(int* sd)
 {
-  /* Preenchendo as informacoes de identificacao do servidor */
-  ladoServ.sin_family 	   = AF_INET;
-  ladoServ.sin_addr.s_addr = inet_addr(ip);
-  ladoServ.sin_port 	   = htons(porta);
+  struct sockaddr_in ladoCli;
 
   /* Preenchendo as informacoes de identificacao do cliente */
   ladoCli.sin_family 	 = AF_INET;
@@ -33,34 +27,40 @@ void start_client(char* ip, int porta)
 
   /* sd contem apenas dados sobre familia e protocolo  */
 
-  sd = socket(AF_INET,SOCK_DGRAM,0);
-  if(sd<0) 
+  *sd = socket(AF_INET,SOCK_DGRAM,0);
+  if(*sd<0) 
     { printf("Nao pode abrir o socket \n"); exit(1); }
 
   /* Relacionando o socket sd com a estrutura ladoCli */
   /* Depois do bind, sd faz referencia a protocolo local, ip local e porta local */
-  rc = bind(sd, (struct sockaddr *) &ladoCli, sizeof(ladoCli));
+  int rc = bind(*sd, (struct sockaddr *) &ladoCli, sizeof(ladoCli));
   if(rc<0) 
     { printf("Nao pode fazer um bind da porta\n"); exit(1); }
-  printf("{UDP, IP_Cli: %s, Porta_Cli: %u, IP_R: %s, Porta_R: %d}\n", inet_ntoa(ladoCli.sin_addr), ntohs(ladoCli.sin_port), ip, porta);
 }
 
-void send_server(char* msg)
+void send_server(int sd, char* ip, int porta,char* msg)
 {
+  struct sockaddr_in ladoServ;
+  /* Preenchendo as informacoes de identificacao do servidor */
+  ladoServ.sin_family 	   = AF_INET;
+  ladoServ.sin_addr.s_addr = inet_addr(ip);
+  ladoServ.sin_port 	   = htons(porta);
 
-  rc = sendto(sd, msg, strlen(msg), 0,(struct sockaddr *) &ladoServ, sizeof(ladoServ));
+  int rc = sendto(sd, msg, strlen(msg), 0,(struct sockaddr *) &ladoServ, sizeof(ladoServ));
   if(rc<0) 
     { printf("Nao pode enviar os dados.\n"); close(sd); exit(1); }
+
   printf("Enviando mensagem:%s\n",msg);
 }
 
 int main() {
+  int sd;
   char msg[MAX_MSG];
   printf("Digite a mensagem: ");
   scanf("%s",msg);
 
-  start_client("127.0.0.1",3030);
-  send_server(msg);
+  start_client(&sd);
+  send_server(sd,"127.0.0.1",3030,msg);
 
   return 0;
 }
