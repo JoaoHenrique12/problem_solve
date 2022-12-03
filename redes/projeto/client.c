@@ -19,12 +19,12 @@ struct sockaddr_in ladoCli;
 struct sockaddr_in ladoServ;
 
 // IP PORTA MENSAGEM
-void start_client()
+void start_client(char* ip, int porta)
 {
   /* Preenchendo as informacoes de identificacao do servidor */
   ladoServ.sin_family 	   = AF_INET;
-  ladoServ.sin_addr.s_addr = inet_addr("127.0.0.1");
-  ladoServ.sin_port 	   = htons(3030);
+  ladoServ.sin_addr.s_addr = inet_addr(ip);
+  ladoServ.sin_port 	   = htons(porta);
 
   /* Preenchendo as informacoes de identificacao do cliente */
   ladoCli.sin_family 	 = AF_INET;
@@ -42,13 +42,11 @@ void start_client()
   rc = bind(sd, (struct sockaddr *) &ladoCli, sizeof(ladoCli));
   if(rc<0) 
     { printf("Nao pode fazer um bind da porta\n"); exit(1); }
-  printf("{UDP, IP_Cli: %s, Porta_Cli: %u, IP_R: %s, Porta_R: %d}\n", inet_ntoa(ladoCli.sin_addr), ntohs(ladoCli.sin_port), "127.0.0.1", 3030);
+  printf("{UDP, IP_Cli: %s, Porta_Cli: %u, IP_R: %s, Porta_R: %d}\n", inet_ntoa(ladoCli.sin_addr), ntohs(ladoCli.sin_port), ip, porta);
 }
 
-void send_server()
+void send_server(char* msg)
 {
-  char msg[MAX_MSG];
-  scanf("%s",msg);
 
   rc = sendto(sd, msg, strlen(msg), 0,(struct sockaddr *) &ladoServ, sizeof(ladoServ));
   if(rc<0) 
@@ -57,8 +55,12 @@ void send_server()
 }
 
 int main() {
-  start_client();
-  send_server();
+  char msg[MAX_MSG];
+  printf("Digite a mensagem: ");
+  scanf("%s",msg);
+
+  start_client("127.0.0.1",3030);
+  send_server(msg);
 
   return 0;
 }
