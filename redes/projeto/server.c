@@ -14,25 +14,20 @@
 
 #define MAX_MSG 100
 
-int			sd, rc, n;
-socklen_t		tam_Cli;
-struct sockaddr_in	endCli;
-struct sockaddr_in	endServ;
-
-
-void start_server(int port)
+void bind_server(int* sd, int port)
 {
-  sd=socket(AF_INET, SOCK_DGRAM, 0);
-  if(sd<0) 
-    { printf("Nao pode abrir o socket \n"); exit(1);  }
+  struct sockaddr_in	endServ;
 
-/* Preenchendo informacoes sobre o servidor */
   endServ.sin_family 	  = AF_INET;
   endServ.sin_addr.s_addr = htonl(INADDR_ANY); 
   endServ.sin_port 	  = htons(port);
+  *sd = socket(AF_INET, SOCK_DGRAM, 0);
+
+  if(*sd<0) 
+    { printf("Nao pode abrir o socket \n"); exit(1);  }
 
 /* Fazendo um bind na porta local do servidor */
-  rc = bind (sd, (struct sockaddr *) &endServ,sizeof(endServ));
+  int rc = bind (*sd,(struct sockaddr*) &endServ, sizeof(endServ));
   if(rc<0) 
     { printf("Nao pode fazer bind na porta %d\n",port); exit(1); }
 
@@ -40,27 +35,31 @@ void start_server(int port)
 
 }
 
-void listen_server(char* msg)
+void listen_server(int sd,char* msg)
 {
+  socklen_t		tam_Cli;
+  struct sockaddr_in	endCli;
+
   memset(msg,0x0,MAX_MSG);
   tam_Cli = sizeof(endCli);
   
-  n = recvfrom(sd, msg, MAX_MSG, 0, (struct sockaddr *) &endCli, &tam_Cli);
+  int n = recvfrom(sd, msg, MAX_MSG, 0, (struct sockaddr *) &endCli, &tam_Cli);
   if(n<0) 
     { printf("Nao pode receber dados \n"); return;} 
     
-  printf("{UDP, IP_L: %s, Porta_L: %u", inet_ntoa(endServ.sin_addr), ntohs(endServ.sin_port));
-  printf(" IP_R: %s, Porta_R: %u} => %s\n",inet_ntoa(endCli.sin_addr), ntohs(endCli.sin_port), msg);
   return;
 }
 
 int main() {
+  int	sd;
+
+  bind_server(&sd,3030);
+
   char msg[MAX_MSG];
-  start_server(3030);
 
   while(1)
   {
-    listen_server(msg);
+    listen_server(sd,msg);
     printf("Mensagem na main:%s\n",msg);
   }
 
