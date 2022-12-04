@@ -12,14 +12,6 @@
 #include <string.h>
 #include <stdlib.h>
 
-#define MAX_MSG 100
-
-typedef struct package {
-  int check_sum;
-  char msg[MAX_MSG];
-}Package;
-
-
 void start_client(int* sd)
 {
   struct sockaddr_in ladoCli;
@@ -57,6 +49,7 @@ void send_server(int sd, char* ip, int porta,Package* pkg)
   printf("Enviando mensagem:%s\n",pkg->msg);
 }
 
+/*
 int main() {
   int sd;
   Package pkg;
@@ -70,3 +63,4 @@ int main() {
 
   return 0;
 }
+*/
