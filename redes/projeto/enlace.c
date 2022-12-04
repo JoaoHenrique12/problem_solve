@@ -5,6 +5,9 @@
 #include<sys/socket.h>
 #include <netinet/in.h>
 
+#include<pthread.h>
+#include<unistd.h>
+
 #define MAX_MSG 100
 #define true 1
 #define false 0
@@ -23,13 +26,12 @@ void kick_client(int port, char* ip);
 
 int main()
 {
+  pthread_t tid;
   int my_port,send_port;
   char ip_send[20];
 
-  //printf("Listen on port: ");
-  //scanf("%d",&my_port);
-
-  //kick_server(my_port);
+  printf("Listen on port: ");
+  scanf("%d",&my_port);
 
   printf("Send ip: ");
   scanf("%s",ip_send);
@@ -37,8 +39,11 @@ int main()
   printf("Send port: ");
   scanf("%d",&send_port);
 
+  pthread_create(&tid, NULL, (void*)kick_server,(void*) my_port);
+
   kick_client(send_port,ip_send);
 
+  pthread_join(tid, NULL);
 
   return 0;
 }
