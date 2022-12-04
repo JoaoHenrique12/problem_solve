@@ -51,7 +51,9 @@ void kick_client(int port, char* ip)
   {
     printf("localhost> ");
     scanf("%s",pkg.msg);
-    pkg.check_sum = 27;
+
+    pkg.check_sum = make_hash(pkg.msg);
+    printf("Enviando hash:%d",pkg.check_sum);
 
     send_server(sd,ip,port,&pkg);
   }

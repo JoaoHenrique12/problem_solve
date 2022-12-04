@@ -1,3 +1,5 @@
+#include<string.h>
+
 #ifndef UTILS_C
 #define UTILS_C
 
@@ -11,4 +13,14 @@ typedef struct package {
   struct sockaddr_in src;
 }Package;
 
+
+int make_hash(char* msg)
+{
+  int hash = 0;
+
+  for(int i = 0; i < strlen(msg);i++ )
+    hash += msg[i] * (i + 1) * (i + 1);
+
+  return hash;
+}
 #endif
