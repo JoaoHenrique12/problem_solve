@@ -48,19 +48,3 @@ void send_server(int sd, char* ip, int porta,Package* pkg)
 
   printf("Enviando mensagem:%s\n",pkg->msg);
 }
-
-/*
-int main() {
-  int sd;
-  Package pkg;
-
-  printf("Digite a mensagem: ");
-  scanf("%s",pkg.msg);
-  pkg.check_sum = 27;
-
-  start_client(&sd);
-  send_server(sd,"127.0.0.1",3030,&pkg);
-
-  return 0;
-}
-*/
