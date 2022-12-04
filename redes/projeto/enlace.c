@@ -20,13 +20,13 @@ int main()
 {
   pthread_t tid;
   int my_port,send_port;
-  char ip_send[20];
+  char ip_send[20] = "127.0.0.1";
 
   printf("Listen on port: ");
   scanf("%d",&my_port);
 
-  printf("Send ip: ");
-  scanf("%s",ip_send);
+  //printf("Send ip: ");
+  //scanf("%s",ip_send);
 
   printf("Send port: ");
   scanf("%d",&send_port);
@@ -53,7 +53,9 @@ void kick_client(int port, char* ip)
     scanf("%s",pkg.msg);
 
     pkg.check_sum = make_hash(pkg.msg);
-    printf("Enviando hash:%d",pkg.check_sum);
+    bool pacote_quebrado = violate_package(&pkg);
+
+    printf("Enviando hash:|%d|, pkg_foi_violado:%d\n",pkg.check_sum,pacote_quebrado);
 
     send_server(sd,ip,port,&pkg);
   }
@@ -69,6 +71,7 @@ void kick_server(int port)
   while(true)
   {
     listen_server(sd,&pkg);
-    printf("%s|%d|>'%s'\n",inet_ntoa(pkg.src.sin_addr),pkg.check_sum,pkg.msg);
+    printf("%s|%d,%d|>'%s'\n",
+        inet_ntoa(pkg.src.sin_addr),pkg.check_sum,make_hash(pkg.msg),pkg.msg);
   }
 }
