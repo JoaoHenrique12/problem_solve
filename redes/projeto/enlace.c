@@ -19,16 +19,17 @@ typedef struct package {
 #include "server.c"
 
 void kick_server(int port);
+void kick_client(int port, char* ip);
 
 int main()
 {
   int my_port,send_port;
   char ip_send[20];
 
-  printf("Listen on port: ");
-  scanf("%d",&my_port);
+  //printf("Listen on port: ");
+  //scanf("%d",&my_port);
 
-  kick_server(my_port);
+  //kick_server(my_port);
 
   printf("Send ip: ");
   scanf("%s",ip_send);
@@ -36,8 +37,28 @@ int main()
   printf("Send port: ");
   scanf("%d",&send_port);
 
+  kick_client(send_port,ip_send);
+
 
   return 0;
+}
+
+void kick_client(int port, char* ip)
+{
+  int sd;
+  Package pkg;
+
+  start_client(&sd);
+
+  while(true)
+  {
+    printf("localhost> ");
+    scanf("%s",pkg.msg);
+    pkg.check_sum = 27;
+
+    send_server(sd,ip,port,&pkg);
+  }
+
 }
 
 void kick_server(int port)

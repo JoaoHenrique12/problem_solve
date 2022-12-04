@@ -45,6 +45,4 @@ void send_server(int sd, char* ip, int porta,Package* pkg)
   int rc = sendto(sd, pkg, sizeof(Package), 0,(struct sockaddr *) &ladoServ, sizeof(ladoServ));
   if(rc<0) 
     { printf("Nao pode enviar os dados.\n"); close(sd); exit(1); }
-
-  printf("Enviando mensagem:%s\n",pkg->msg);
 }

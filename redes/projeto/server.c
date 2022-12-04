@@ -29,7 +29,7 @@ void bind_server(int* sd, int port)
   if(rc<0) 
     { printf("Nao pode fazer bind na porta %d\n",port); exit(1); }
 
-  printf("Esperando por dados no IP: 127.0.0.1, porta UDP numero: %d \n",port);
+  printf("Server online, port: %d \n",port);
 
 }
 
