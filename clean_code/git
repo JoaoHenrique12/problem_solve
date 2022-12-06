@@ -1,5 +1,7 @@
 Comandos do git mais avançados e breve explicação deles.
 
+git add -p file.c
+  -> A opção -p significa patch, é usado para adicionar só uma parte do file.c.
 
 git show HEAD~1:redes/projeto/server.c
   -> Mostra todo o arquivo do commit anterior.
@@ -10,14 +12,29 @@ git log --all --decorate --oneline --graph
 git reflog 
   -> Mostra hashes de comits e histórico de ações realizadas no
 repositório. Se vc está usando este comando é porque provávelmente fez
-cagada.
+cagada. Geralmente este comando vem depois de um reset...
 
 git rebase -i main
  -> Vc quer pegar os commits da main para a sua branch atual, ex: feature.
 Ele é próximo ao git merge, mas mantém os commits alinhados e a branch 
 'limpa'. Quando não fazer rebase ? Não faça em branchs públicas, como
-master, deploy, ...
+master, deploy, devel. Só faça em branches particulares.
 
 git reset --softt --mixed --hard
-  -> É uma espécie de checkout
+  -> É uma espécie de checkout, é como se vc quisesse desfazer um commit.
 
+git diff --chached
+  -> Mostra a diferença do que está na staging area para HEAD~1, sem a
+flag ele faz o diff com o que está no working directory.
+
+git diff check_sum_antigo check_sum_novo main.c
+  -> Mostra o diff de um arquivo específico.
+
+git restore VS git restore --staged
+  -> Este comando vem depois que vc deu um git add em algo errado.
+git restore volta os arquivos para o estado HEAD~1, enquanto que o
+git restore --staged só retira os arquivos da staging area.
+
+
+Principal material de referência.
+  https://www.atlassian.com/git/tutorials/setting-up-a-repository
