@@ -1,0 +1,7 @@
+version: '3.8'
+services:
+  prolog:
+    build: .
+    restart: always
+    volumes:
+      - ./src:/app
