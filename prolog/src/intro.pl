@@ -1,4 +1,4 @@
-% Comentário...
+% Fatos
 
 gerou(kelly, maria).
 gerou(cleber, maria).
@@ -7,8 +7,25 @@ gerou(maria, julia).
 gerou(maria, pedro).
 gerou(pedro, lucas).
 
-% Como saber se A gerou B?
-% gerou(maria, pedro).
+feminino(maria).
+feminino(kelly).
+feminino(bruna).
+feminino(julia).
+
+% Regras.
+
+% :- lê como se fosse um se.
+
+masculino(X) :- not(feminino(X)).
+filho(X,Y) :- gerou(Y,X).
+avos(X,K) :-
+  gerou(K,Y),
+  gerou(Y,X),
+  format('Avo de ~w ~s ~w ~n', [X,"é ",K]).
+
+ancestral(X,Y) :-
+  gerou(X,Z),
+  ancestral(Z,Y).
 
 % Filhos de A: , ';' é usado para perguntar se tem mais 'filhos'.
 
