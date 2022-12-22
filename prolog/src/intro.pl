@@ -24,8 +24,18 @@ avos(X,K) :-
   format('Avo de ~w ~s ~w ~n', [X,"é ",K]).
 
 ancestral(X,Y) :-
-  gerou(X,Z),
-  ancestral(Z,Y).
+  gerou(Y,X),
+  format('~w ~n',[Y]),
+  ancestral(Y,Z).
+
+irmaos(X,Y) :-
+  gerou(K,X),
+  gerou(K,Y),
+  (X \== Y).
+
+
+ifelse(X,Y,_) :- X,!,Y.
+ifelse(_,_,Z) :- Z.
 
 % Filhos de A: , ';' é usado para perguntar se tem mais 'filhos'.
 
