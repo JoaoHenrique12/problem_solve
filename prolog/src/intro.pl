@@ -28,11 +28,13 @@ ancestral(X,Y) :-
   format('~w ~n',[Y]),
   ancestral(Y,Z).
 
+
 irmaos(X,Y) :-
   gerou(K,X),
   gerou(K,Y),
   (X \== Y).
 
+%irmaos(X,X) :-  !,fail.
 
 ifelse(X,Y,_) :- X,!,Y.
 ifelse(_,_,Z) :- Z.

@@ -54,3 +54,18 @@
 
 ifelse(X,Y,\_) :- X,!,Y.
 ifelse(\_,\_,Z) :- Z.
+
+## Operações em base de conhecimentos
+
+- bagof(X,Y,L). // Recupera a lista L, dado X que satisfaz a condição Y.
+- setof(X,Y,L). // Retorna a lista L ordenada e sem repetição.
+- findall(X,Y,L). // Retorna tudo, ele não falha e retorna uma lista vazia.
+
+## Dynamic
+
+```
+% Adiciona e remove fatos dinamicamente.
+% retractall(pessoa(_,_,30)). // Remove todas as pessoas de 30 anos.
+% assertz(pessoa(cleiton,brasil,23)). // Adiciona uma pessoa.
+:- dynamic pessoa/3.
+```
