@@ -1,79 +1,27 @@
 # Arquitetura e desenho de software
 
-## 5W2H
+## GRASPS
+General Responsability Assignment Software Patterns(Grasps)
 
-Framework conceitual.
+### Criador
 
-- What ?
-- Why ?
-- Who ?
-- Where ?
-- When ?
-- How ?
-- How Much ?
-<hr>
+Relação Todo - Parte.
 
-![5w2h](images/5w2h.png)
+A própria classe não tem autonomia para se criar.
 
-## Rich Picture
+A classe todo cria.
 
-Modelagem de ideias, pouco informal. Sao desenhos e textos, normalmente 
-feitos a mao livre.
+![Como saber se o acoplamento é fore](images/criador.png)
 
-## Diagrama Causa-Efeito \<Ishikawa\>
+### Especialista
 
-![ishikawa](images/ishikawa.png)
+O criador é um especialista em criação de instâncias.
 
-- Propor acoes corretivas
-- Acompanhar acoes corretivas
-- Gerar relatorio do problema
+Semântica forte, TODO-PARTE.
 
-## Estimativas
+Qual a melhor classe para : Ordenar algo ? Cadastrar algo ? Calcular
+algo ?
 
-- Habilidades dos desenvolvedores
-- Recursos financeiros
-- Prazos
+### Polimorfismo
 
-![estimativas](images/estimativas.png)
-
-## Glossario e lexicos
-
-Glossario = (nome: definicao).
-
-Lexico = (Termo, definicao, ocorrencia do simbolo na aplicacao)
-
-
-![lexico](images/lexico.png)
-
-![lexico_regras](images/lexico_regras.png)
-
--> hyperlinks de termos.
-
-## Design Sprint
-
-### Unpack
-- Insights com a participacao de todos.
-- Levantamenteo rasoavel do escopo do projeto.
-- Pode ser documentado com mapas mentais.
-
-### Sketch
-
-- Desenhos de varias ideias, ex: rich picture, story board.
-
-### Decision
-
-- Escoler a melhor ideia
-
-### Prototype
-
-- Criar o prototipo e validar.
-
-## Backlog do Produto
-
-### Priorizando itens
-
-MOSCW
-- M < Must have >
-- S < Should have >
-- C < Could have >
-- W < Won't have this time >
+...
