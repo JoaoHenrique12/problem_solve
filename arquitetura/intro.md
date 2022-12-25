@@ -52,6 +52,8 @@ orientado a objetos.
 Encapsula a escolha da classe concreta ser utilizada na criação de
 objetos de um determinado tipo.
 
+![Factory](images/factory.png)
+
 #### Abstract Factory
 
 Encapsula a escolha das classes concretas a serem utilizadas na 
