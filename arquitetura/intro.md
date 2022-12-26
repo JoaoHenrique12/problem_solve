@@ -59,6 +59,8 @@ objetos de um determinado tipo.
 Encapsula a escolha das classes concretas a serem utilizadas na 
 criação de objetos de diversas famílias.
 
+![Abstract Factory](images/abstract_factory.png)
+
 #### Builder
 
 Separa o processo de construção de um objeto de sua apresentação e 
