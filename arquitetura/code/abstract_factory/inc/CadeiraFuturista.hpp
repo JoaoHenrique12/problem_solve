@@ -1,7 +1,7 @@
 #ifndef CADEIRA_FUTURISTA_HPP
 #define CADEIRA_FUTURISTA_HPP
 
-#include "cadeira.hpp"
+#include "Cadeira.hpp"
 
 class CadeiraFuturista: public Cadeira {
   public:

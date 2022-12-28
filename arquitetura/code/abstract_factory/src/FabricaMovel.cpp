@@ -1,4 +1,4 @@
-#include "fabrica_movel.hpp"
+#include "FabricaMovel.hpp"
 
 FabricaMovel::FabricaMovel(char nome_conjunto[])
 {

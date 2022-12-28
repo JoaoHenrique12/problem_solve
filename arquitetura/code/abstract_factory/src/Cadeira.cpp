@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-#include "cadeira.hpp"
+#include "Cadeira.hpp"
 
 Cadeira::Cadeira()
 {

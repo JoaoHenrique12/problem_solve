@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "cadeira_classica.hpp"
+#include "CadeiraClassica.hpp"
 
 CadeiraClassica::CadeiraClassica():Cadeira()
 {

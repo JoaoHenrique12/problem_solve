@@ -1,8 +1,8 @@
 #include<iostream>
 #include<stdio.h>
-#include "cadeira.hpp"
-#include "cadeira_classica.hpp"
-#include "cadeira_futurista.hpp"
+#include "Cadeira.hpp"
+#include "CadeiraClassica.hpp"
+#include "CadeiraFuturista.hpp"
 
 using namespace std;
 

@@ -1,7 +1,7 @@
 #ifndef CADEIRA_CLASSICA_HPP
 #define CADEIRA_CLASSICA_HPP
 
-#include "cadeira.hpp"
+#include "Cadeira.hpp"
 
 class CadeiraClassica: public Cadeira {
   public:
