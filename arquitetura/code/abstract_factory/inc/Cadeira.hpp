@@ -20,6 +20,7 @@ class Cadeira {
     void sentar();
     void levantar();
 
+  private:
 };
 
 #endif

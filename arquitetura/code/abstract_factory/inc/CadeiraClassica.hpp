@@ -12,6 +12,7 @@ class CadeiraClassica: public Cadeira {
 
     void set_preco(int preco);
 
+  private:
 };
 
 #endif

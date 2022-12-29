@@ -5,6 +5,7 @@ class FabricaMovel {
   public:
     FabricaMovel(char nome_conjunto[]);
     ~FabricaMovel();
+  private:
 };
 
 #endif

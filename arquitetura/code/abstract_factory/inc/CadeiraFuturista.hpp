@@ -8,6 +8,8 @@ class CadeiraFuturista: public Cadeira {
     CadeiraFuturista();
     ~CadeiraFuturista(){};
     void apresentar();
+
+  private:
 };
 
 #endif
