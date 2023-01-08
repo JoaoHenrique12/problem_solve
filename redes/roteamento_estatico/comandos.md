@@ -14,3 +14,8 @@ sudo ip route add 10.0.0.0/24 via 10.0.0.1
 
 sudo echo 1 > /proc/sys/net/ipv4/ip\_forward
 
+- Listando tabela de rotas
+
+route -n
+
+netstat -rn
