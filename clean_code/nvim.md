@@ -9,6 +9,7 @@
 - [E] Expand all folders
 - [W] Collapse all folders
 - [\-] dir up
+- [CTRL + ]] select a dir
 - [s] open element on system way
 - [CTRL + k] display information about files
 - [f] file search
