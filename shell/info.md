@@ -1,10 +1,12 @@
 # Shell
 
-## Find file and remove it
+## Find
+
+### Find file and remove it
 
 Finding files starting witch first uppercase letter. 
 ```
-find . -name '[A-Z]*' -type f -exec rm {} \;
+$ find . -name '[A-Z]*' -type f -exec rm {} \;
 ```
 
 - **find** : Find all files in the current directory.
@@ -14,8 +16,28 @@ find . -name '[A-Z]*' -type f -exec rm {} \;
 
 The {} placeholder is replaced with the name of each matching file, and the \; tells the find command to terminate the -exec action.
 
-## Find files containing word
+### Find files containing word
 
 ```
-grep -e "word" -rnw ./
+$ grep -e "word" -rnw ./
+```
+
+## Permissions
+
+#### Tipos de permisões
+
+- 4 read
+- 2 write
+- 1 execute
+
+#### Grupos de permisões
+
+1. Seu usuário
+1. Seu grupo
+1. Todos os outros usuários
+
+```
+$ chmod 722 -R src/
+$ # Agora passe estas permissões para o usuário www-data
+$ chown -R www-data:www-data src/
 ```
