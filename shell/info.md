@@ -41,3 +41,7 @@ $ chmod 722 -R src/
 $ # Agora passe estas permissões para o usuário www-data
 $ chown -R www-data:www-data src/
 ```
+
+## Configurando ssh
+
+- /etc/ssh/sshd\_config
