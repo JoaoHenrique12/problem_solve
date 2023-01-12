@@ -33,3 +33,19 @@
 - [p] paste 
 - [y] copy file name
 - [g + y] copy the absolute path
+
+## Some keymaps
+
+:Telescope keymap
+
+Search 
+
+- <leader>sf file
+- <leader>sh help
+- <leader>sw word
+- <leader>sg use grep
+
+Telescope
+
+- <leader>? recent files
+- <leader>/ into the file
