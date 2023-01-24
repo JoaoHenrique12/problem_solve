@@ -19,7 +19,7 @@
 
 - [o] open new file
 - [CTRL + t] new tab
-- [CTRL + h] open in horizontal
+- [CTRL + x] open in horizontal
 - [CTRL + v] open in vertical
 
 ### File Management

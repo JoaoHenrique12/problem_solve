@@ -45,3 +45,7 @@ $ chown -R www-data:www-data src/
 ## Configurando ssh
 
 - /etc/ssh/sshd\_config
+
+## Show wifi
+
+nmcli dev wifi show-password
