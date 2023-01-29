@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redes</title>
+</head>
+<body>
+    <h1>Relato</h1>
+    <pre>
+    Pude compreender melhor sobre as entradas em servidores dns, como por exemplo: MX, NS, A, CNAME, etc. Também Pude
+    perceber a diferença entre servidores dhcp primários e secundários. Também achei deveras interessante como que servidores
+    de e-mail usam o dns reverso para averiguar se o e-mail recebido realmente é de um servidor confiável, e não de uma máquina
+    que foi sequestrada.
+
+    Por fim, digo que fazer uma requisição HTTP usando netcat/telnet é algo que deixa mais claro que tudo na rede são arquivos.
+    </pre>
+
+    <h2>DNS Records</h2>
+    <pre>
+
+- Name Server (NS) Record: Describes a name server for the domain that permits DNS lookups within several zones. Every primary as well as secondary name server must be reported via this record.
+
+- Mail Exchange (MX) Record: Permits mail to be sent to the right mail servers located in the domain. Other than IP addresses, MX records include fully-qualified domain names.
+
+- Address (A) Record: Used to map a host name to an IP address. Generally, A records are IP addresses. If a computer consists of multiple IP addresses, adapter cards, or both, it must possess multiple address records.
+
+- Canonical Name (CNAME) Record: Can be used to set an alias for the host name
+
+- Text (TXT) Record: Permits the insertion of arbitrary text into a DNS record. These records add SPF records into a domain.
+
+- Time-to-Live (TTL) Record: Sets the period of data, which is ideal when a recursive DNS server queries the domain name information
+
+- Start of Authority (SOA) Record: Declares the most authoritative host for the zone. Every zone file should include an SOA record, which is generated automatically when the user adds a zone.
+
+- Pointer (PTR) Record: Creates a pointer, which maps an IP address to the host name in order to do reverse lookups.
+
+    </pre>
+</body>
+</html>

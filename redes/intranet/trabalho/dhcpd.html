@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redes</title>
+</head>
+<body>
+    
+    <pre>
+            option broadcast-address 192.168.1.255;
+            option routers 192.168.7.254;
+            option domain-name "engenhariadequintal.com";
+            option domain-name-servers 192.168.7.1, 192.168.7.2;
+
+            default-lease-time 600;
+            max-lease-time 7200;
+
+            ddns-update-style none;
+
+
+            subnet 192.168.7.0 netmask 255.255.255.0 {
+                range 192.168.7.15 192.168.7.105;
+
+                group{ # Dando IPs para MACs conhecidos.
+                    host ligo           { hardware ethernet 08:00:20:7A:E2:70; fixed-address 192.162.7.18;   }
+                    # ...
+                    host vumfsa2        { hardware ethernet 00:80:48:8d:12:f0; fixed-address 192.162.7.19;   }
+                }
+            }
+    </pre>
+
+</body>
+</html>

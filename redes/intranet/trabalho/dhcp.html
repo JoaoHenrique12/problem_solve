@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redes</title>
+</head>
+<body>
+    <h1>DHCP</h1>
+    <h2>Configurando</h2>
+    <pre>
+
+        sudo apt install isc-dhcp-server -y
+
+        sudo systemctl stop NetworkManager
+        sudo ifconfig nome_interface 192.168.7.1/24 broadcast 192.168.7.255
+
+
+        etc/default/isc-dhcp-server , Alterar o arquivo todo para o do link abaixo.
+
+        etc/dhcp/dhcpd.conf , Adicionar as linhas do link abaixo.
+
+        systemctl start isc-dhcp-server
+    </pre>
+
+    <a href="isc-dhcp-server.html">dhcp-server</a> <br>
+    <a href="dhcpd.html">dhcpd.conf</a> <br>
+
+    <h2>Questões</h2>
+
+    2- Respondido em <a href="dhcpd.html">DHCPD, linhas 27-31</a><br> 
+    3- 
+    <pre>
+        Servidores DHCP não conseguem dar o mesmo endereço de IP para máquinas diferentes, os endereços possíveis definidos para a subnet devem ser únicos entre os DHCPs.
+    </pre>
+    
+</body>
+</html>

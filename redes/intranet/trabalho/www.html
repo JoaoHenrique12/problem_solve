@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redes</title>
+</head>
+<body>
+   <h1>WWW</h1> 
+   <h2>Questões</h2>
+   <ol>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li>
+        <pre>
+        Server-side includes (SSI) são diretivas no código HTML que permitem incluir o conteúdo de outros arquivos em uma página da web durante o processamento do servidor.
+        Isso permite que o conteúdo seja incluído dinamicamente, tornando a manutenção do site mais fácil.
+        A utilização de SSI é comum em sites estáticos que precisam incluir elementos repetitivos, como cabeçalhos, rodapés e menus.
+        </pre>
+    </li>
+    <li>
+    <pre>
+    Os servidores web geralmente implementam mecanismos como threading, processamento por lotes e eventos para atender várias conexões simultaneamente. Alguns exemplos incluem:
+
+    Modelo de Thread: Neste modelo, o servidor cria uma nova thread para cada nova conexão, permitindo que cada thread atenda a uma solicitação de forma independente.
+    Modelo de Processo: Neste modelo, o servidor cria um novo processo para cada nova conexão, permitindo que cada processo atenda a uma solicitação de forma independente.
+    Modelo de Eventos: Neste modelo, o servidor utiliza uma estrutura de eventos para gerenciar várias conexões ao mesmo tempo. O servidor "escuta" várias conexões ao mesmo tempo e atende a cada solicitação quando ocorre.
+
+    Algumas diretivas de configuração que podem afetar a capacidade de um servidor de atender várias conexões simultaneamente incluem: MaxClients, MaxRequestWorkers, Timeout, KeepAlive.
+    Estas diretivas estão presentes em servidores como Apache, Nginx, etc.
+    </pre>
+    </li>
+    <li>
+        <pre>
+
+
+Um proxy HTTP é um servidor intermediário que aguarda solicitações de clientes e as redireciona para outros servidores.
+Ele funciona como um intermediário entre o cliente e o servidor de destino, o que pode ter várias utilidades, incluindo:
+
+Anonimato: O cliente se conecta ao proxy em vez de se conectar diretamente ao servidor de destino, o que pode ajudar a preservar a privacidade do usuário.
+
+Cache: O proxy pode armazenar em cache o conteúdo de páginas web frequentemente solicitadas, o que pode aumentar a velocidade de carregamento das páginas e reduzir o tráfego na rede.
+
+Filtro de Conteúdo: O proxy pode ser configurado para filtrar o conteúdo da web baseado em palavras-chave, URLs, tipos de arquivos, etc., 
+o que pode ser útil para proteger os usuários de conteúdo inapropriado ou prejudicial.
+
+Balanceamento de carga: O proxy pode distribuir as solicitações de vários clientes entre vários servidores de destino, o que pode ajudar a equilibrar a carga e a garantir que nenhum servidor fique sobrecarregado.
+
+Quando o cliente envia uma solicitação ao servidor, a solicitação é primeiro enviada ao proxy. O proxy, em seguida, verifica se já tem uma cópia em cache da página solicitada.
+Se tiver, ele a envia de volta ao cliente. Se não tiver, o proxy envia a solicitação ao servidor de destino e retorna a resposta ao cliente.
+
+        </pre>
+    </li>
+    <li>
+        <pre>
+
+
+O protocolo MIME (Multipurpose Internet Mail Extensions) é um conjunto de regras que determina como os dados devem ser codificados e transmitidos na Internet.
+Ele é amplamente utilizado em serviços web para identificar o tipo de conteúdo em uma mensagem ou solicitação HTTP.
+
+Ao enviar uma solicitação HTTP a um servidor web, o cliente pode especificar o tipo de conteúdo desejado usando o cabeçalho "Accept" da solicitação.
+O servidor, por sua vez, pode responder a esta solicitação especificando o tipo de conteúdo que está enviando na resposta, usando o cabeçalho "Content-Type".
+O tipo de conteúdo é especificado usando um tipo MIME, como text/html, image/jpeg, etc.
+
+Assim, o protocolo MIME é crucial para o correto funcionamento dos serviços web, pois permite que o servidor e o cliente se comuniquem sobre o tipo de conteúdo que estão transmitindo,
+permitindo que o navegador web saiba como exibir o conteúdo de uma página da web corretamente.
+        </pre>
+    </li>
+    <li>
+
+    </li>
+    <li>
+
+    </li>
+   </ol>
+</body>
+</html>
