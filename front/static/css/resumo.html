@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="images/flower_53.png" type="image/x-icon">
+    <title>Oia o gáis</title>
+
+    <style>
+        * { /* Configurações globais.*/
+            /*height: 100%;*/
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        body {
+            /* Poderia ter mais cores, para ter um deradê mais suave. */
+            background-image: linear-gradient(to right, #43E631, #34B325 , #396634 );
+            /*background-image: linear-gradient(45deg, #43E631, #34B325, #396634 35%);*/
+            background-attachment: fixed;
+        }
+        main {
+            background-color: white;
+            width: 700px;
+            height: 700px;
+            padding: 30px;
+            border-radius: 5px;
+            margin: auto; /* alinhamento horizontal*/
+            box-shadow: 10px 10px 10px black; /* direita, baixo, expalhamento, cor*/
+        }
+        p {
+            text-align: justify;
+            text-indent: 20px; /*Paragrafo*/
+        }
+
+        div#pai {
+            display: flex;
+        }
+
+        .pseudo {
+            width: 300px;
+            height: 300px;
+            background-color: rgb(163, 162, 162);
+            border-radius: 5px;
+            border: 3px solid black;
+            text-align: center;
+            box-sizing: border-box; /* A borda faz parte da caixa*/
+        }
+        .pseudo:hover { /* Pseudo classes */
+            background-color: rgb(240, 243, 34);
+            transition: 750ms; /* Tem como usar transition para cada propriedade separada.*/
+            transform: translate(-2px,-2px);
+            box-shadow: 5px 5px 5px black;
+        }
+
+        p::after { /* Pseudo element*/
+            content: '[Cê leu isso mesmo ?]';
+        }
+        /* p é filho de div */
+        div > p {
+            display: none;
+        }
+        div#d2:hover > p {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    
+    <main>
+        <h1>Titulo 1</h1>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+             Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+             Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <h1>Titulo 2</h1>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+             Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+             Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <h1>Titulo 3</h1>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+             Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+             Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+             Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+             Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+    </main>
+
+    <br>
+
+    <div id="pai">
+        <div id="d1" class="pseudo">
+            01
+        </div>
+        <div id="d2" class="pseudo">
+            02
+            <p>
+                Texto escondido.
+            </p>
+        </div>
+        <div id="d3" class="pseudo">
+            03
+        </div>
+    </div>
+
+</body>
+</html>
