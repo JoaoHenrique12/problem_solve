@@ -8,6 +8,7 @@
 - IconArchive
 - Favicon
 - iana.org, mediatypes.
+- https://fonts.google.com/icons
 
 
 ### Iframe
@@ -290,3 +291,8 @@ type = reset value="limpar" -> Vai perto do submit.
 <datalist id="lstprof">
   <option value="PROF"> Professor</option>
 </datalist>
+
+
+## MEDIA QUERY
+
+Device Breakpoints
