@@ -72,4 +72,5 @@ int main()
  *		O estado de transição da DP consiste em calcular o menor caminho de saltos do gato até a ultima lajota, diante da opção do gato dar 
  *	um pulo de tamanho 1 ou 2. Portanto teremos que tirar o mínimo entre infinitos saltos e 1 salto + mínimo de saltos da decisão de dar um pulo de
  *	tamanho 1 ou 2.
+ *  link: <https://olimpiada.ic.unicamp.br/pratique/pj/2018/f3/pulo/>
  */
