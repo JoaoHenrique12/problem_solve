@@ -1,5 +1,19 @@
 # MATH
 
+## ROUND
+```cpp
+double num = 3.8; 
+int rounded_num = round(num);
+cout << rounded_num << endl;
+```
+
+```python3
+from math import ceil, floor
+
+round(1.7)
+round(1.3)
+```
+
 ## Horner's Method
 
 ```cpp
