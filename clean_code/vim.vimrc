@@ -21,3 +21,6 @@ set wildmenu
 set incsearch
 
 colorscheme torte
+
+set scrolloff=10
+" set relativenumber

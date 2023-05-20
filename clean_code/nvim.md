@@ -49,3 +49,7 @@ Telescope
 
 - <leader>? recent files
 - <leader>/ into the file
+
+## References
+
+[Ref1](https://docs.rockylinux.org/books/nvchad/nvchad_ui/nvimtree/)
