@@ -1,55 +1,11 @@
-# Nvim
+# Astrovim
 
-## NvimTree
+- [repository](https://github.com/AstroNvim/AstroNvim)
+- [HASH](0b723ec1fbdd973a2e5fe32a8d358985d58b59a3), version V3.15.10
+- [Basic usage](https://astronvim.com/Basic%20Usage/walkthrough)
+- [Initial Tutorial](https://www.youtube.com/watch?v=GEHPiZ10gOk&t=660s&ab_channel=Cretezy)
 
-### File Explorer
+## Needs
 
-- [R] refresh
-- [H] hide and display dot files
-- [E] Expand all folders
-- [W] Collapse all folders
-- [\-] dir up
-- [CTRL + ]] select a dir
-- [s] open element on system way
-- [CTRL + k] display information about files
-- [f] file search
-- [F] disable file search
-
-### Opening File
-
-- [o] open new file
-- [CTRL + t] new tab
-- [CTRL + x] open in horizontal
-- [CTRL + v] open in vertical
-
-### File Management
-
-- [a] add a new element in tree
-- [r] rename
-- [CTRL + r] rename regardless its original name
-- [x] cut, it can be used to move files in the tree
-- [c] copy 
-- [d] delete 
-- [p] paste 
-- [y] copy file name
-- [g + y] copy the absolute path
-
-## Some keymaps
-
-:Telescope keymap
-
-Search 
-
-- <leader>sf file
-- <leader>sh help
-- <leader>sw word
-- <leader>sg use grep
-
-Telescope
-
-- <leader>? recent files
-- <leader>/ into the file
-
-## References
-
-[Ref1](https://docs.rockylinux.org/books/nvchad/nvchad_ui/nvimtree/)
+- NerdFonts
+- Kitty
