@@ -29,6 +29,23 @@ int horner(int poly[], int n, int x)
 }
 ```
 
+## Sieve Eratostenes
+
+```cpp
+#define size_p 1000000
+
+vector<bool>primes(size_p,true);
+void sieve_eratosthenes()
+{
+  for( long long i = 2; i < (long long) sqrt(size_p) + 1; i++ )
+  {
+    long long j = i * i;
+    while( j <= size_p )
+      { primes[j] = false; j += i; }
+  }
+}
+```
+
 ## Removing elements
 
 ### Removing specific number
