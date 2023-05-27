@@ -43,3 +43,9 @@ ln test link-hard-test
 [Stack Overflow](https://stackoverflow.com/questions/185899/what-is-the-difference-between-a-symbolic-link-and-a-hard-link)
 
 [Reference](https://blog.devgenius.io/hard-link-and-a-symbolic-link-any-difference-ef8b9bd61734#:~:text=Symbolic%20links%20can%20be%20made,number%2C%20symbolic%20links%20do%20not.)
+
+## Screen
+
+Split terminal without tmux.
+
+[Reference](https://linuxize.com/post/how-to-use-linux-screen/)
