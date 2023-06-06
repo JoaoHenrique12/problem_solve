@@ -58,3 +58,17 @@ def part3():
 
     name = return_greeting("Sank")
     print(name)
+
+
+def part4():
+    def double_sum10(func):
+        def wrapper(number):
+            return func(number) * 2 + 10
+
+        return wrapper
+
+    @double_sum10
+    def give_me_number(x):
+        return x
+
+    print(give_me_number(11))
