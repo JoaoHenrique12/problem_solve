@@ -20,8 +20,12 @@ Ele é próximo ao git merge, mas mantém os commits alinhados e a branch
 'limpa'. Quando não fazer rebase ? Não faça em branchs públicas, como
 master, deploy, devel. Só faça em branches particulares.
 
-git reset --softt --mixed --hard
-  -> É uma espécie de checkout, é como se vc quisesse desfazer um commit.
+git reset --softt --mixed --hard <ID_COMMIT>
+  -> Desfaz as alteracoes ate o <ID_COMMIT>
+
+  -> --soft : Joga tudo na staging area.
+  -> --mixed (default) : Joga tudo no working directory
+  -> --hard : Joga tudo fora.
 
 git diff --chached
   -> Mostra a diferença do que está na staging area para HEAD~1, sem a
@@ -32,9 +36,32 @@ git diff check_sum_antigo check_sum_novo main.c
 
 git restore VS git restore --staged
   -> Este comando vem depois que vc deu um git add em algo errado.
-git restore volta os arquivos para o estado HEAD~1, enquanto que o
-git restore --staged só retira os arquivos da staging area.
+git reset file.c: Unstages the changes in the file and keeps them in the working directory.
+git restore --staged file.c: Unstages the changes in the file and discards them from the working directory.
 
+git cherry-pick
+  -> Copia um commit e 'cola' ele na branch atual.
+
+git branch -D <NOME_BRANCH>
+  -> Deleta branch
+
+git branch -b <NOME_BRANCH> <ID_BRANCH_REVERTIDA>
+  -> Restaura a branch, ID_BRANCH_REVERTIDA e pego com reflog.
+
+git revert <ID_COMMIT>
+  -> cria um novo commit, sem as adicoes do ID_COMMIT.
+
+git bisect
+  -> Encontra o ponto de insercao do bug no codigo.
+  start -> comeca o comando.
+  bad -> diz que tem o bug no commit.
+
+  # Encontre um commit em que o codigo estava bom.
+  git checkout <ID_COMMIT_BOM>
+
+  good -> diz que nao tem bug no commit.
+
+  # O git te guiara ate o commit com erro.
 
 Principal material de referência.
   https://www.atlassian.com/git/tutorials/setting-up-a-repository
