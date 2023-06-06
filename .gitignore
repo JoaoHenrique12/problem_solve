@@ -5,3 +5,6 @@ tmp/
 bancos/beecrowd/sql/
 obj/
 bin/
+env/
+venv/
+.ipynb_checkpoints
