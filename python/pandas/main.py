@@ -1,7 +1,17 @@
-import numpy as np
 import pandas as pd
 
 """
+CONVERT CATEGORICAL VARIABLES INTO NUMBERS
+    df = pd.get_dummies(df, columns=["Sex","Pclass","Embarked"])
+
+
+FIND ALL NOT NUMERIC
+    df.describe(include=[object])
+
+SUM NA
+    df.isna().sum()
+
+
 Removing specific rows
 
 for x in df.index:
