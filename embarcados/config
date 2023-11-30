@@ -1,0 +1,47 @@
+Host rasp44
+    HostName 164.41.98.26
+    User joaopaulino
+    Port 13508
+    IdentityFile ~/.ssh/fse_key
+
+Host rasp46
+    HostName 164.41.98.28
+    User joaopaulino
+    Port 13508
+    IdentityFile ~/.ssh/fse_key
+
+Host rasp47
+    HostName 164.41.98.29
+    User joaopaulino
+    Port 13508
+    IdentityFile ~/.ssh/fse_key
+
+Host rasp48
+    HostName 164.41.98.27
+    User joaopaulino
+    Port 13508
+    IdentityFile ~/.ssh/fse_key
+
+Host rasp43
+    HostName 164.41.98.15
+    User joaopaulino
+    Port 13508
+    IdentityFile ~/.ssh/fse_key
+
+Host rasp40
+    HostName 164.41.98.16
+    User joaopaulino
+    Port 13508
+    IdentityFile ~/.ssh/fse_key
+
+Host rasp42
+    HostName 164.41.98.24
+    User joaopaulino
+    Port 13508
+    IdentityFile ~/.ssh/fse_key
+
+Host rasp45
+    HostName 164.41.98.18
+    User joaopaulino
+    Port 3000
+    IdentityFile ~/.ssh/fse_key

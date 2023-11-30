@@ -30,6 +30,7 @@ int main() {
 		fprintf(stderr, "Error setting up PWM\n");
 		return 1;
 	}
+
 	pinMode(DIR1, OUTPUT);
 	pinMode(DIR2, OUTPUT);
 
