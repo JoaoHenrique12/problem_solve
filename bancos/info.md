@@ -126,3 +126,5 @@ tabela atual so o codVendedor.
 - Duas ou mais chaves candidatas.
 - Chaves candidatas sao compostas.
 - Elas tem superposicao de atributos.
+
+## SchemaSpy
