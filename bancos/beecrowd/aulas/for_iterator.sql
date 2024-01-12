@@ -1,8 +1,12 @@
 \i docker-entrypoint-initdb.d/data.sql
 
 -- O tipo de uma tupla pode ser especificado de duas formas:
--- nome_tabela%ROWTYPE
+ -- var nome_tabela%ROWTYPE
+ -- var RECORD
+
 -- RECORD, generico e funciona ate para joins
+
+-- Obtento do tipo especifico variavel tabela.atributo%TYPE
 
 CREATE OR REPLACE FUNCTION list_professores() RETURNS void AS $$
 DECLARE
