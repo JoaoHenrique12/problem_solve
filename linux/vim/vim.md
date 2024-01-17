@@ -1,5 +1,7 @@
 # [tutorial_vim](https://learnvim.irian.to)
 
+[Resizing windows](https://vi.stackexchange.com/questions/514/how-do-i-change-the-current-splits-width-and-height)
+
 # Vim Basics
 
 ## Starting vim
