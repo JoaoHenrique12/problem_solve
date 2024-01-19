@@ -71,6 +71,80 @@ new filename -> Open in horizontal/vertical split
 
 ## Searching Files
 
+Search in path variable.
 ```
 :find file_name.py
 ```
+
+Search pattern in specified file.
+```
+VIM GREP
+:vim /breakfast/ app/controllers/**/*.rb
+
+TERMINAL GREP
+:grep -R "lunch" app/controllers/ 
+```
+
+Quick Fix comands.
+```
+:copen        Open the quickfix window
+:cclose       Close the quickfix window
+:cnext        Go to the next error
+:cprevious    Go to the previous error
+:colder       Go to the older error list
+:cnewer       Go to the newer error list
+```
+
+### Netrw
+
+```
+set nocp
+filetype plugin on
+```
+
+```
+%    Create a new file
+d    Create a new directory
+R    Rename a file or directory
+D    Delete a file or directory
+s    Open in vertical split
+o    Open in horizontal split
+```
+
+## Moving in file
+
+```
+ge    Move backward to end of the previous word
+gE    Move backward to end of the previous WORD
+
+g_    Go to the last non-blank char in the current line
+n|    Go the column n in the current line
+
+%    Navigate to another match, usually works for (), [], {}
+
+Ctrl-D    Scroll down half screen
+Ctrl-U    Scroll up half screen
+
+Ctrl-F    Scroll down whole screen
+Ctrl-B    Scroll up whole screen
+
+(/ and ?)
+n    Repeat last search in same direction of previous search
+N    Repeat last search in opposite direction of previous search
+
+:marks
+ma mark position with mark a
+'a
+```
+
+```
+
+''    Jump back to the last line in current buffer before jump
+``    Jump back to the last position in current buffer before jump
+`[    Jump to beginning of previously changed / yanked text
+`]    Jump to the ending of previously changed / yanked text
+`<    Jump to the beginning of last visual selection
+`>    Jump to the ending of last visual selection
+`0    Jump back to the last edited file when exiting vim
+```
+
