@@ -12,7 +12,7 @@ filetype plugin on
 d    Create a new directory
 R    Rename a file or directory
 D    Delete a file or directory
-s    Open in vertical split
+v    Open in vertical split
 o    Open in horizontal split
 ```
 
