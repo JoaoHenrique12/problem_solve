@@ -12,3 +12,15 @@
 ## Naming conventions
 
 [link](https://hexdocs.pm/elixir/main/naming-conventions.html#:~:text=Functions%20that%20return%20a%20boolean%20are%20named%20with%20a%20trailing%20question%20mark.&text=However%2C%20functions%20that%20return%20booleans,follow%20another%20convention%2C%20described%20next.)
+
+## Small tips
+
+```elixir
+_ -> Anonymous var
+_date -> Anonymous var named date
+
+^x = 10
+^x = 11 -> error, cause pin operation.
+a = b = 1 + 3
+:math.pow(2,3)
+```
