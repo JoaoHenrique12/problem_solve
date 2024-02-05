@@ -14,6 +14,7 @@
 
 ```elixir
 alias IO, as: MyIO
+IO.inspect([1,2,3], width: 3, limit: 1)
 
 # ---------------------
 _ -> Anonymous var
@@ -21,7 +22,6 @@ _date -> Anonymous var named date
 
 ^x = 10
 ^x = 11 -> error, cause pin operation.
-a = b = 1 + 3
 
 # ---------------------
 "String add numbers #{3 + 4}" <> " Concat"
