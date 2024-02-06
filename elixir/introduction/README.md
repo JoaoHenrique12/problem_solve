@@ -26,6 +26,9 @@ _date -> Anonymous var named date
 # ---------------------
 "String add numbers #{3 + 4}" <> " Concat"
 String.to_charlist("A string")
+
+# Float format.
+sum = :erlang.float_to_binary(sum, [decimals: 1])
 ```
 
 ### Tuples
