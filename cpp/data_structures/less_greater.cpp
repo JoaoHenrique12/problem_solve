@@ -16,7 +16,7 @@ void printi(vector<pair<int,int>> const& vt)
 bool second_first(pair<int,int> const& el1, pair<int,int> const& el2)
 {
   if( el1.second == el2.second)
-    return el2.first > el1.first;
+    return el1.first < el2.first;
 
   return el1.second < el2.second;
 }
@@ -25,7 +25,7 @@ bool second_first(pair<int,int> const& el1, pair<int,int> const& el2)
 bool second_first_inverse(pair<int,int> const& el1, pair<int,int> const& el2)
 {
   if( el1.second == el2.second)
-    return el2.first < el1.first;
+    return el1.first > el2.first;
 
   return el1.second > el2.second;
 }
