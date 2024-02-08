@@ -1,5 +1,17 @@
 # Data Structures
 
+## LowerUperBound
+
+```cpp
+// log(n)
+// Lower : iterador para o primeiro elemento que é maior ou igual ao valor passado.
+// Upper: iterador para o primeiro elemento que é maior que o valor passado.
+// Binary search : retorna um bool , se ta la ou não.
+
+auto lower = lower_bound(data.begin(), data.end(), 4);
+binary_search(data.begin(), data.end(), 3); // true
+```
+
 ## Less & Greater
 
 ```cpp
