@@ -1,6 +1,6 @@
 # Data Structures
 
-## LowerUperBound
+## LowerUperBound & Sort
 
 ```cpp
 // log(n)
@@ -10,6 +10,10 @@
 
 auto lower = lower_bound(data.begin(), data.end(), 4);
 binary_search(data.begin(), data.end(), 3); // true
+
+// sort - > n log n | stable_sort() - > n log^2 n
+stable_sort(arr.begin(), arr.end(), greater<int>()); 
+
 ```
 
 ## Less & Greater
