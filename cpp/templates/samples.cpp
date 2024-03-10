@@ -25,11 +25,23 @@ template <typename T> void Array<T>::print()
         cout << " " << *(ptr + i);
     cout << endl;
 }
+
+ 
+// Samle 2. Using default value for template.
+template <class T, class U = char> class A {
+public:
+    T x;
+    U y;
+    A() { cout << "Constructor Called" << endl; }
+};
  
 int main()
 {
     int arr[5] = { 1, 2, 3, 4, 5 };
     Array<int> a(arr, 5);
     a.print();
+
+    // Sample 2.
+    A<char> kte;
     return 0;
-}
+}   
