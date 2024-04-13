@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include "deque.c"
+#include "deque.h"
 
 // flavius josephus problem
 

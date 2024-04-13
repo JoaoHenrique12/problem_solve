@@ -1,18 +1,4 @@
-#include<stdio.h>
-#include<stdlib.h>
-
-typedef struct no
-{
-  int value;
-  struct no* next;
-  struct no* back;
-}NO;
-
-typedef struct lista{
-  NO* begin;
-  NO* end;
-  int size;
-}LISTA;
+#include "deque.h"
 
 void init_lista(LISTA* l)
 {
