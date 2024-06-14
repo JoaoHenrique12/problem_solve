@@ -43,6 +43,7 @@ tmux
 # <c-b> + p/n -> previous and next
 # <c-b> + w -> show windows
 # <c-b> + , -> rename window
+# <c-b> + & -> kill window
 
 # Deataching
 # <c-b> + d
