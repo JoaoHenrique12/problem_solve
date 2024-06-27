@@ -22,6 +22,12 @@ grep -rnw /path/to/folder -e word
 grep --include=\*.{c,h} -rnw '/path/to/somewhere/' -e "pattern"
 ```
 
+### Find and replace
+
+```bash
+grep -rlw pattern | xargs sed -i 's/pattern/new_pattern/g'
+```
+
 ## [Tmux](https://hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/)
 
 [Cheat sheet](https://tmuxcheatsheet.com/)
