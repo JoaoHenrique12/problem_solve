@@ -69,3 +69,9 @@ tmux
 
 ```
 
+```bash
+# Plugins:
+# tmux ressurect
+# Save session:<c-b> + <c-s>
+# Restore session:<c-b> + <c-r>
+```
