@@ -1,5 +1,8 @@
 Comandos do git mais avançados e breve explicação deles.
 
+git fetch --prune origin
+  -> clean local branches
+
 git add -p file.c
   -> A opção -p significa patch, é usado para adicionar só uma parte do file.c.
 
