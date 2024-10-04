@@ -100,3 +100,15 @@ const (
     z = iota
 )
 ```
+
+## defer
+
+```go
+func deferido() () {
+  fmt.Println("Open file 1")
+  defer fmt.Println("Close file 1")
+
+  fmt.Println("Open file 2")
+  defer fmt.Println("Close file 2")
+}
+```
