@@ -112,3 +112,7 @@ func deferido() () {
   defer fmt.Println("Close file 2")
 }
 ```
+
+## Export | Import
+
+Para deixar publico em GO, tem que comecar com letra maiuscula
