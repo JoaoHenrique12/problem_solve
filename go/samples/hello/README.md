@@ -1,5 +1,7 @@
 # GO
 
+[traps](https://go-traps.appspot.com/#overview)
+
 [stylish](https://rakyll.org/style-packages/)
 
 [go get X go install](https://medium.com/@chaewonkong/difference-between-go-get-and-go-install-in-go-a076d7352186)
