@@ -1,5 +1,21 @@
 # GO
 
+
+## Env vars
+
+```bash
+go env
+```
+
+## cross compiling
+
+```bash
+# windows
+GOOG=windows GOARCH=amd64 go build main.go
+# mac
+GOOG=darwin GOARCH=amd64 go build main.go
+```
+
 ## Execute
 
 ```bash
