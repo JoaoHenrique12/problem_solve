@@ -6,6 +6,16 @@
 
 [go get X go install](https://medium.com/@chaewonkong/difference-between-go-get-and-go-install-in-go-a076d7352186)
 
+## Rename package
+
+```go
+import (
+    gourl "net/url"
+
+    "myother.com/url"
+)
+```
+
 
 ## Env vars
 
@@ -134,7 +144,7 @@ func deferido() () {
   defer fmt.Println("Close file 2")
 }
 
-# Funciona como uma pilha
+// Funciona como uma pilha
 ```
 
 ## Export | Import
