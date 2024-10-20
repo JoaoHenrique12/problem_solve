@@ -13,9 +13,9 @@ go env
 
 ```bash
 # windows
-GOOG=windows GOARCH=amd64 go build main.go
+GOOS=windows GOARCH=amd64 go build main.go
 # mac
-GOOG=darwin GOARCH=amd64 go build main.go
+GOOS=darwin GOARCH=amd64 go build main.go
 ```
 
 ## Execute
@@ -129,6 +129,8 @@ func deferido() () {
   fmt.Println("Open file 2")
   defer fmt.Println("Close file 2")
 }
+
+# Funciona como uma pilha
 ```
 
 ## Export | Import
