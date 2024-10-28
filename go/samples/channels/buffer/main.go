@@ -6,7 +6,7 @@ import "fmt"
 
 func main() {
 
-    var messages chan string = make(chan string, 1)
+    var messages chan string = make(chan string, 1) // Buffer
 
     messages <- "ping"
     // messages <- "pong"
