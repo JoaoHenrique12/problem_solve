@@ -1,6 +1,8 @@
 a.out
 client
 server
+envia
+recebe
 *.o
 *.txt
 *.swp
