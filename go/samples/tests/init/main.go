@@ -1,10 +1,10 @@
 package main
 
 func main()  {
-  println(soma(1,2,3,4))
+  println(Soma(1,2,3,4))
 }
 
-func soma(lst ...int) int {
+func Soma(lst ...int) int {
   total := 0
 
   for _, v := range lst {
@@ -14,7 +14,7 @@ func soma(lst ...int) int {
   return total
 }
 
-func multiplica(lst ...int) int {
+func Multiplica(lst ...int) int {
   total := 1
 
   for _, v := range lst {

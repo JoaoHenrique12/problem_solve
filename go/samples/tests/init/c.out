@@ -1,0 +1,8 @@
+mode: set
+sample.com/tests/init/main.go:3.14,5.2 1 0
+sample.com/tests/init/main.go:7.27,10.25 2 1
+sample.com/tests/init/main.go:10.25,12.4 1 1
+sample.com/tests/init/main.go:14.3,14.15 1 1
+sample.com/tests/init/main.go:17.33,20.25 2 1
+sample.com/tests/init/main.go:20.25,22.4 1 1
+sample.com/tests/init/main.go:24.3,24.15 1 1

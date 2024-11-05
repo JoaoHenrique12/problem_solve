@@ -1,10 +1,24 @@
 package main
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
+
+func ExampleSoma() {
+  fmt.Println(Soma(1,2,3,4))
+  fmt.Println(Soma(1,2,3,5))
+  fmt.Println(Soma(1,2,3,6))
+  // Output:
+  // 10
+  // 11
+  // 12
+}
+
 
 func TestSoma(t *testing.T){
   expected := 6
-  output := soma(1,2,3)
+  output := Soma(1,2,3)
 
   if expected != output {
     t.Error("Expected:", expected, "Got:", output)
@@ -22,10 +36,22 @@ func TestMultiplica(t *testing.T){
   }
 
   for _, v := range testset {
-    output := multiplica(v.input...)
+    output := Multiplica(v.input...)
     if v.expected != output {
       t.Error("Expected:", v.expected, "Got:", output)
     }
   }
 
+}
+
+func BenchmarkSoma(b *testing.B){
+  for i := 0; i < b.N; i++ {
+    Soma(1,2,3,4)
+  }
+}
+
+func BenchmarkMultiplica(b *testing.B){
+  for i := 0; i < b.N; i++ {
+    Multiplica(1,2,3,4)
+  }
 }
