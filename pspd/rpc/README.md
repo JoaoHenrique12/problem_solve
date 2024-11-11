@@ -35,6 +35,12 @@ O serviço de diretórios então é um pré-requisito para viabilizar aplicaçõ
 ## Info
 
 ```bash
+# env vars to compile
+export LDLIBS="$LDLIBS -ltirpc"
+export CFLAGS="$CFLAGS -I/usr/include/tirpc"
+```
+
+```bash
 sudo apt install rpcbind
 # validate if it is working
 rpcinfo -p 
