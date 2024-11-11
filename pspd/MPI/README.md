@@ -2,6 +2,12 @@
 
 Message-Passing-Interface
 
+## Install
+
+```bash
+sudo apt install mpich
+```
+
 ## Apostila
 
 ### Message-Parsing
