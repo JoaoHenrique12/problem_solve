@@ -2,12 +2,42 @@
 
 Message-Passing-Interface
 
-## Install
+## Tools
+
+### Install
 
 ```bash
 sudo apt install mpich
 ```
 
+### Compile code
+
+```bash
+mpicc main.c
+mpirun -np <numero_processos> ./a.out
+```
+
+```c
+#include<mpi.h>
+
+// Init, finalize
+// argc, argv also can be passed instead NULL
+MPI_Init(NULL, NULL);
+MPI_Finalize();
+
+// Get number of process
+int world_size;
+MPI_Comm_size(MPI_COMM_WORLD, &world_size);
+
+// Get rank of process
+int world_rank;
+MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
+
+// Get name of processor
+char processor_name[MPI_MAX_PROCESSOR_NAME];
+int name_len;
+MPI_Get_processor_name(processor_name, &name_len);
+```
 ## Apostila
 
 ### Message-Parsing
