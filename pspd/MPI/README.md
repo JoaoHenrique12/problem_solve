@@ -16,28 +16,10 @@ sudo apt install mpich
 mpicc main.c
 mpirun -np <numero_processos> ./a.out
 ```
+[sample](./hello_mpi/main.c)
 
-```c
-#include<mpi.h>
+[data types](https://www.mpich.org/static/docs/v3.3/www3/Constants.html)
 
-// Init, finalize
-// argc, argv also can be passed instead NULL
-MPI_Init(NULL, NULL);
-MPI_Finalize();
-
-// Get number of process
-int world_size;
-MPI_Comm_size(MPI_COMM_WORLD, &world_size);
-
-// Get rank of process
-int world_rank;
-MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
-
-// Get name of processor
-char processor_name[MPI_MAX_PROCESSOR_NAME];
-int name_len;
-MPI_Get_processor_name(processor_name, &name_len);
-```
 ## Apostila
 
 ### Message-Parsing
