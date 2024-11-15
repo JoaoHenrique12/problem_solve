@@ -20,6 +20,8 @@ mpirun -np <numero_processos> ./a.out
 
 [data types](https://www.mpich.org/static/docs/v3.3/www3/Constants.html)
 
+MPI_INT, MPI_CHAR, MPI_UNSIGNED_INT, MPI_PACKED -> struct
+
 ## Apostila
 
 ### Message-Parsing
