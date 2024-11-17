@@ -31,11 +31,13 @@ int main(int argc, char *argv[])
     int tmp_chunck = chunck;
     for (size_t position = 0, worker_rank = 0;
         worker_rank < world_size;
+        /* position + rest < VEC_SIZE; */
         position+= chunck, worker_rank++) 
     { 
+      /* if(position + rest + chunck == VEC_SIZE) */
       if(worker_rank == world_size - 1)
         tmp_chunck += rest;
-      printf("tmp_chunck: %d\n", tmp_chunck);
+      printf("(position, tmp_chunck) : (%zu, %d)\n", position, tmp_chunck);
       MPI_Send(&vec[position], tmp_chunck, MPI_INT, worker_rank, TAG, MPI_COMM_WORLD);
     }
     free(vec);
@@ -50,6 +52,8 @@ int main(int argc, char *argv[])
     printf(" %d", vec[i]);
   }
   printf("\n");
+
+  free(vec);
 
   MPI_Finalize();
   return 0;
