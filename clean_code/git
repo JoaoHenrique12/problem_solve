@@ -68,3 +68,6 @@ git bisect
 
 Principal material de referência.
   https://www.atlassian.com/git/tutorials/setting-up-a-repository
+
+Usando a porta 80/443 ao inves de 22
+  https://docs.github.com/en/authentication/troubleshooting-ssh/using-ssh-over-the-https-port
