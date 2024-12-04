@@ -6,7 +6,7 @@
 
 [go get X go install](https://medium.com/@chaewonkong/difference-between-go-get-and-go-install-in-go-a076d7352186)
 
-- go get pip install
+- go get  == pip install
 
 ## Rename package
 
