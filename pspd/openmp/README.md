@@ -4,6 +4,8 @@
 gcc main.c -fopenmp
 
 OMP_NUM_THREADS=10 ./a.out
+
+export OMP_NUM_THREADS=4 && gcc main.c -fopenmp &&  time  ./a.out 
 ```
 
 ```c
