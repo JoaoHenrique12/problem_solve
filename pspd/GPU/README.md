@@ -13,6 +13,8 @@ prova: diferenca de cpu para gpu, escalonar processos em GPU, porque nao tem cac
 - Stream Processor ?
 - Greds Blocks threads ?
 
+- por que nao usar muito threads ? Por conta de cache, eu acho
+
 ## Taxonomia de Flynn
 
 ### SISD (CPU um core)
@@ -68,7 +70,8 @@ Na próxima segunda feira, 16/12, faremos nossa segunda avaliação individual. 
 
 1. Estudar todo o conteúdo da prova anterior (introdução aos Sistemas Distribuídos, RPC, MPI)
 
-2. Estudar Taxonomia de Flynn (SISD, SIMD, MISD, MIMD), conceito de speedup, modelo fork-join  - ver apostila Unicamp e slides Unipampa para acessar esses conteúdos; Programação OpenMP; focar nos pragmas vistos em sala de aula e nas dicas de paralelização de códigos sequenciais (incluindo algoritmos de busca e ordenação)
+2. Estudar Taxonomia de Flynn (SISD, SIMD, MISD, MIMD), conceito de speedup, modelo fork-join  - ver apostila Unicamp e slides Unipampa para acessar esses conteúdos; Programação OpenMP;
+focar nos pragmas vistos em sala de aula e nas dicas de paralelização de códigos sequenciais (incluindo algoritmos de busca e ordenação)
 
 3. Estudar GPUS: conceitos básicos; comparativo entre arquiteturas CPU e GPU; programação básica usando linguagem CUDA. 
 

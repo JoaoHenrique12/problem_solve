@@ -6,6 +6,7 @@
 int main(int argc, char *argv[])
 {
   int tid = -1, n = 0; 
+  /* omp_set_num_threads(10); */
   #pragma omp parallel
   {
     n = omp_get_num_threads();
