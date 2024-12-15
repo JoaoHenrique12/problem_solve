@@ -20,6 +20,9 @@ omp_get_thread_num()
 
 #pragma omp parallel
 
+
+#pragma omp parallel num_threads(5)
+
 #pragma omp section
 #pragma omp parallel section
 
