@@ -82,3 +82,65 @@ Obs1.: Foram disponibilizadas materiais novos, listas de exercícios OMP e códi
 Obs2.: Códigos em GPU devem ser testados nas máquinas do cluster chococino.
 
 Bons estudos.
+
+## Quests
+
+### Q1
+
+(F) Mecanismos que provêem interoperabilidade entre sistemas distintos pressupõem o uso de um sistema de mensageria e um protocolo de comunicação.
+Sem esses recursos não há como realizar a interoperabilidade citada
+
+(F) No grpc as aplicações que usam protobuf enviam dados em formato binário.
+Por isso, essas aplicações tem tempo de processamento melhor do que aplicações grpc que fazem uso de formatos como o JSON
+
+(V) Num diálogo http/2, se o cliente fizer uma solicitação de recurso para o servidor, este último pode enviar não só o recurso
+solicitado, mas vários outros associados (sem uma solicitação explícita) na mesma conexão . Essa característica difere o http/2 do
+http/1.1.
+
+### Q2
+
+i = i + 10;
+Nenhuma das opções
+
+(F) A execução com o comando OMP_NUM_THREADS=4 t1 vai imprimir o valor 40
+(F) Se a linha 9 for suprimida, o binário equivalente acionado com o comando OMP_NUM_THREADS=3 t1 imprimirá sempre o valor 30
+(F) Se na linha 7 for acrescentada a declaração private(i) e houver supressão da linha 9, o binário equivalente acionado com o
+comando OMP_NUM_THREADS=6 t1, o programa vai imprimir 60
+
+### Q3
+
+soma += omp_get_num_threads();
+Todas estao erradas
+
+(F) A execução com o comando OMP_NUM_THREADS=4 t1 vai imprimir que cada thread foi executada 25 vezes
+(F) Se este programa for acionado tendo a variável OMP_NUM_THREADS um valor maior do que o número de núcleos da máquina,
+apenas as threads equivalentes ao número de núcleos serão criadas
+(F) Se o programa for executado numa máquina com 10 núcleos de processamento e a variável OMP_NUM_THREADS estiver com
+valor igual a 20, o programa não será ativado
+
+### Q4
+
+apenas kafka e rabbitmq
+
+### Q5
+
+apenas a 3
+
+(F) Se OMP_NUM_THREADS=6, na segunda região paralela desse código (linhas 13 a 18), serão geradas 10 threads e, portanto, 10
+impressões (linha 17)
+
+(F) Se a linha 15 for movida para ficar fora da região paralela (entre as linhas 11 e 13), esse código passa a ser não compilável, pois
+não é possível saber o número de threads em uma região serial do código
+
+(V) Esse código é mais apropriado para funcionar em arquiteturas UMA (Uniform Memory Access) ou de memória compartilhada do
+que em arquiteturas NUMA (Non Uniform Memory Access)
+
+### Q6
+
+(F) RDDs (Resilient Distributed Datasets) são estruturas tipadas do Spark que podem ser alteradas por comandos python ou R
+(V) As transformações (Transformations) são implementadas no Spark em modo lazy, ou seja, são executadas posteriormente, apenas
+quando é instanciado uma ação (Action), visando melhoria de performance
+(V) O Spark é mais rápido do que o Hadoop/Map-Reduce, porque os estágios de execução são implementados com uso intensivo de
+memória ao invés de uso de disco (memória secundária).
+
+### Q7
