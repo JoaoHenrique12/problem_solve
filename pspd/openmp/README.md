@@ -6,11 +6,14 @@ gcc main.c -fopenmp
 OMP_NUM_THREADS=10 ./a.out
 
 export OMP_NUM_THREADS=4 && gcc main.c -fopenmp &&  time  ./a.out 
+
+mpicc -fopenmp main.c && mpirun -np 6 ./a.out 
 ```
 
 ```c
 #include<omp.h>
 
+omp_set_num_threads(3);
 omp_get_num_threads()
 omp_get_max_threads()
 omp_get_thread_num()
