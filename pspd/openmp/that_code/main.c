@@ -34,7 +34,7 @@ int main() {
   #pragma omp parallel num_threads(3)
   {
     printf("Thread %d iniciada...\n", omp_get_thread_num());
-    sleep(1);/* Entrando no loop principal */
+    sleep(1);
     while(cont<MAX) {
       #pragma omp critical
       imprimeTexto();
