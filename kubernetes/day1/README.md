@@ -18,7 +18,7 @@ Opções de container engine: Docker, CRI-O, Podman
 
 ## Container Runtime (CR)
 
-- O container Engine usa o container runtime
+- O container runtime é usado pelo container engine
 
 Tipos de CR
 
