@@ -87,15 +87,17 @@ Bons estudos.
 
 ### Q1
 
-(F) Mecanismos que provêem interoperabilidade entre sistemas distintos pressupõem o uso de um sistema de mensageria e um protocolo de comunicação.
+(V) Mecanismos que provêem interoperabilidade entre sistemas distintos pressupõem o uso de um sistema de mensageria e um protocolo de comunicação.
 Sem esses recursos não há como realizar a interoperabilidade citada
 
-(F) No grpc as aplicações que usam protobuf enviam dados em formato binário.
+(V) No grpc as aplicações que usam protobuf enviam dados em formato binário.
 Por isso, essas aplicações tem tempo de processamento melhor do que aplicações grpc que fazem uso de formatos como o JSON
 
 (V) Num diálogo http/2, se o cliente fizer uma solicitação de recurso para o servidor, este último pode enviar não só o recurso
 solicitado, mas vários outros associados (sem uma solicitação explícita) na mesma conexão . Essa característica difere o http/2 do
 http/1.1.
+
+TODAS VERDADEIRAS, nenhuma satisfaz.
 
 ### Q2
 
@@ -144,3 +146,15 @@ quando é instanciado uma ação (Action), visando melhoria de performance
 memória ao invés de uso de disco (memória secundária).
 
 ### Q7
+
+(V) Apache Kafka é uma plataforma distribuída de tratamento de streaming de eventos em tempo real cujos tópicos podem ser divididos entre vários nós de um cluster
+(F) No Apache Kafka, os canais de acesso funcionam como uma fila de entrada/saída, no modelo FIFO - First In, First out, onde cada processo sempre recupera o último elemento do canal
+(F) O mecanismo publish-subscribe do Apache Kafka funciona como um protocolo de comunicação que equaliza os tempos de processamento dos vários consumidores do broker.
+
+### Q8
+
+(F) O problema dos generais bizantinos é uma metáfora que descreve a dificuldade de se entrar em um acordo quando entidades centralizadas decidem em nome da maioria
+(V) A tecnologia blockchain é uma solução eficiente para o problema dos generais bizantinos
+(V) O algoritmo Paxos é uma solução de consenso distribuído cuja variante pode ser usada para coordenação e resolução de impasses em redes blockchain
+
+### Q9
