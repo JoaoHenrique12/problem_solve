@@ -38,6 +38,7 @@ minikube stop
 minikube delete --purge
 
 minikube start --nodes 2 -p multinode-cluster
+minikube start --nodes 3 --driver=docker -p multinode-cluster
 ```
 
 ```bash
