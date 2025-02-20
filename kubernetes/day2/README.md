@@ -54,7 +54,7 @@ CPU:
 
 ```bash
 sudo apt install stress
-stress --vm 1 --vm-bytes 100M
+stress --vm 1 --vm-bytes 100M --cpu 1
 ```
 
 ## EmptyDir
