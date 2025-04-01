@@ -6,6 +6,8 @@
 
 [go get X go install](https://medium.com/@chaewonkong/difference-between-go-get-and-go-install-in-go-a076d7352186)
 
+[read ways in GO](https://gosamples.dev/read-user-input/)
+
 - go get  == pip install
 
 ## Rename package
