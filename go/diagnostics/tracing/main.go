@@ -6,12 +6,17 @@ import (
 	"log"
 	"os"
 	"runtime/trace"
+	"sync"
 )
 
 // Wrapper for tracing any function
-func traceFunction(ctx context.Context, name string, fn func()) {
-	ctx, task := trace.NewTask(ctx, name)
+func traceFunction(name string, fn func()) {
+	// Create a new independent task for each function call
+	ctx, task := trace.NewTask(context.Background(), name)
 	defer task.End()
+
+	// Add a custom log event so the name appears in the trace
+	trace.Log(ctx, "goroutine_name", name)
 
 	trace.Log(ctx, "event", name+" started")
 	fn()
@@ -32,12 +37,21 @@ func main() {
 	}
 	defer trace.Stop()
 
-	// Create a task for the main function
-	ctx, task := trace.NewTask(context.Background(), "mainTask")
-	defer task.End()
+	// Use a WaitGroup to wait for goroutines
+	var wg sync.WaitGroup
+	wg.Add(2)
 
-	// Run function with tracing
-	traceFunction(ctx, "tracedFunction", tracedFunction)
+	go func() {
+		defer wg.Done()
+		traceFunction("tracedFunction1", tracedFunction)
+	}()
+
+	go func() {
+		defer wg.Done()
+		traceFunction("tracedFunction2", tracedFunction)
+	}()
+
+	wg.Wait() // Wait for all goroutines to finish
 }
 
 // Function remains unaware of tracing
