@@ -17,6 +17,7 @@ func send(s chan<- int, count int)  {
         s<- i*i
     }
 
+    // This is crucial for the range loop in the receiver to terminate gracefully.
     close(s)
 }
 
