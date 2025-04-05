@@ -8,6 +8,9 @@ import (
 	"runtime/trace"
 	"sync"
 )
+// go tool trace trace.out 
+// go tool trace -pprof trace.out > goroutine.pprof
+// go tool pprof main.bin goroutine.pprof 
 
 // Wrapper for tracing any function
 func traceFunction(name string, fn func()) {
