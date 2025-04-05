@@ -10,7 +10,7 @@ func main()  {
   if err != nil {
     panic("Error opening unexistent file !")
   }
-  var b []byte
+  var b []byte = []byte("abc")
   f.Read(b)
   fmt.Println(b)
 }
