@@ -7,6 +7,10 @@ go tool pprof cpu.prof
 
 # MEM
 go tool pprof mem.prof
+
+# The first lines show the total amount of memory used.
+go tool pprof -top mem.prof
+
 ## This mode shows the allocation counts, not the memory consumed
 go tool pprof --inuse_objects mem.prof 
 
