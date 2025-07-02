@@ -26,7 +26,7 @@ sudo apt install automake autoconf libtool pkg-config libssl-dev libsqlite3-dev 
 sh autogen.sh
 
 ### Configuração de build
-./configure --with-crypto-backend=openssl --with-objectstore-backend-db --enable-gost --enable-eddsa
+./configure --with-crypto-backend=openssl --with-objectstore-backend-db --disable-gost --enable-eddsa
 
 ### Compilando código fonte
 make
@@ -40,7 +40,11 @@ sudo make install
 
 ### Conf file
 
+You are not compelled to define it, the default conf file is in
+/etc/softhsm2.conf
+
 ```bash
+man softhsm2.conf
 ### Conf file
 export SOFTHSM2_CONF=/home/user/my_softhsm2.conf
 #### file
@@ -53,13 +57,13 @@ sudo chown <your_user>:<your_group> /var/lib/softhsm/tokens/ # Adjust ownership 
 ### Init token
 
 ```bash
-softhsm2-util --init-token --slot 0 --label "My SoftHSM Token"
+softhsm2-util --init-token --slot 0 --label "My SoftHSM Token" --so-pin 0000 --pin 0000
 ```
 
 ## pkcs11
 
 ```bash
-sudo apt install opensc-pkcs11
+sudo apt install opensc opensc-pkcs11
 
 
 ### Show available slots and token information
