@@ -58,6 +58,8 @@ sudo chown <your_user>:<your_group> /var/lib/softhsm/tokens/ # Adjust ownership 
 
 ```bash
 softhsm2-util --init-token --slot 0 --label "My SoftHSM Token" --so-pin 0000 --pin 0000
+softhsm2-util --init-token --free  --label "My SoftHSM Token" --so-pin 0000 --pin 0000
+softhsm2-util --delete-token --slot <slot> --serial <serial> --so-pin 0000
 ```
 
 ## pkcs11
@@ -77,6 +79,9 @@ pkcs11-tool --module /usr/local/lib/softhsm/libsofthsm2.so \
 #### List public objects withou login
 pkcs11-tool --module /usr/local/lib/softhsm/libsofthsm2.so \
   --list-objects --type pubkey
+
+#### List available mechanisms
+pkcs11-tool --module /usr/local/lib/softhsm/libsofthsm2.so   --login --pin 0000   --sign   --id 02   --list-mechanism
 ```
 
 ### RSA 
@@ -114,4 +119,75 @@ pkcs11-tool --module /usr/local/lib/softhsm/libsofthsm2.so \
 
 ### Convert to PEM format (if needed for other tools like OpenSSL)
 openssl rsa -inform DER -outform PEM -pubin -in my_rsa_key.pub.der -out my_rsa_key.pub.pem
+```
+
+### EC
+
+```bash
+### Gen ECC
+pkcs11-tool --module /usr/local/lib/softhsm/libsofthsm2.so \
+  --login --pin 0000 \
+  --keypairgen \
+  --key-type EC:secp256r1 \
+  --id 02 \
+  --label "My ECC Key" \
+  --usage-sign --usage-decrypt
+
+### Sign
+#### Listando mecanismos de assinatura.
+pkcs11-tool --module /usr/local/lib/softhsm/libsofthsm2.so   --login --pin 0000   --sign   --id 02   --list-mechanism
+#### Hash it first
+sha256sum data.txt | awk '{print $1}' > data.txt.sha256_hex
+xxd -r -p data.txt.sha256_hex > data.txt.sha256_binary
+#### Sign
+pkcs11-tool --module /usr/local/lib/softhsm/libsofthsm2.so \
+  --login --pin 0000 \
+  --sign \
+  --id 02 \
+  --mechanism ECDSA \
+  --input-file data.txt.sha256_binary \
+  --output-file data.eccsig \
+  --signature-format openssl
+
+### Verify
+pkcs11-tool --module /usr/local/lib/softhsm/libsofthsm2.so \
+  --verify \
+  --id 02 \
+  --mechanism ECDSA \
+  --input-file data.txt.sha256_binary \
+  --signature-file data.eccsig \
+  --signature-format openssl
+
+```
+
+### EdDSA
+
+```bash
+### Gen EdDSA
+pkcs11-tool --module /usr/local/lib/softhsm/libsofthsm2.so \
+  --login --pin 0000 \
+  --keypairgen \
+  --key-type EC:edwards25519 \
+  --id 03 \
+  --label "My EdDSA Key" \
+  --usage-sign
+
+### Sign
+# No pre-hashing is needed for EdDSA as it's part of the algorithm itself.
+# Pass the original file directly.
+pkcs11-tool --module /usr/local/lib/softhsm/libsofthsm2.so \
+  --login --pin 0000 \
+  --sign \
+  --id 03 \
+  --mechanism EDDSA \
+  --input-file data.txt \
+  --output-file data.eddsasig
+
+### Verify
+pkcs11-tool --module /usr/local/lib/softhsm/libsofthsm2.so \
+  --verify \
+  --id 03 \
+  --mechanism EDDSA \
+  --input-file data.txt \
+  --signature-file data.eddsasig
 ```
