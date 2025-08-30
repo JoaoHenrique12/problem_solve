@@ -2,6 +2,9 @@
 
 ## Mapped
 ```
+entrypoint files: 
+  acx_crypto_backend.m4
+  acx_openssl_eddsa.m4
    src
   │  bin
   │ └  util

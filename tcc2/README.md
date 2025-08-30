@@ -81,7 +81,7 @@ pkcs11-tool --module /usr/local/lib/softhsm/libsofthsm2.so \
   --list-objects --type pubkey
 
 #### List available mechanisms
-pkcs11-tool --module /usr/local/lib/softhsm/libsofthsm2.so   --login --pin 0000   --sign   --id 02   --list-mechanism
+pkcs11-tool --module /usr/local/lib/softhsm/libsofthsm2.so   --login --pin 0000 --list-mechanism
 ```
 
 ### RSA 
