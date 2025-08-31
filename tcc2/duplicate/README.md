@@ -216,3 +216,24 @@ Encontrado em diversos lugares:
 - dump/tables.h
 - util/softhsm2-util-ossl.cpp
 
+## softhsm2-util-ossl.(cpp|h)
+
+no .h o cabecalho foi importado com: if defined() || defined()
+
+```cpp
+typedef struct eddsa_key_material_t {}
+
+int crypto_save_eddsa(CK_SESSION_HANDLE hSession, char* label, char* objID, size_t objIDLen, int noPublicKey, EVP_PKEY* eddsa);
+eddsa_key_material_t* crypto_malloc_eddsa(EVP_PKEY* eddsa);
+void crypto_free_eddsa(eddsa_key_material_t* keyMat);
+```
+
+### softhsm2-util-ossl.cpp
+
+```cpp
+// Isso vai falhar, SLH-DSA não tem essa chamada por id.
+// por hora vou manter, mas isso tem que ser ajustado.
+switch (EVP_PKEY_type(EVP_PKEY_id(pkey)))
+```
+
+## SoftHSM.(cpp|h)
