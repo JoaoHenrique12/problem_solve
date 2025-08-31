@@ -5,6 +5,9 @@
 entrypoint files: 
   acx_crypto_backend.m4
   acx_openssl_eddsa.m4
+
+src/lib/SoftHSM.(cpp|h)
+
 crypto:
   EDPrivateKey.cpp
   EDPublicKey.cpp
