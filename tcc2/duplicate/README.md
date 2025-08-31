@@ -2,6 +2,17 @@
 
 ## Notes
 
+### DER (Distinguished Encoding Rules)
+
+https://letsencrypt.org/docs/a-warm-welcome-to-asn1-and-der/
+
+PKCS#8 DER é o formato binário e serializado para armazenar informações de chaves privadas criptográficas, parte da norma PKCS#8,
+que pode ser opcionalmente criptografada com uma palavra-passe usando um dos esquemas PKCS#5. DER (Distinguished Encoding Rules)
+é um método de codificação binário para dados usando ASN.1, que é uma representação alternativa ao formato PEM 
+(Privacy-Enhanced Mail). 
+
+### Notes
+
 nid -> New ID, é o id na hora de criar as chaves com o ctx !!!
 PTAL -> NID_ED25519
 
@@ -66,4 +77,27 @@ struct AsymMech
 }
 ```
 
-## CMakeList.txt ?
+## OSSLCryptoFactory.cpp
+
+Added SLHDSA -> OSSLCryptoFactory::getAsymmetricAlgorithm(...)...
+
+## OSSLUtil.(cpp|h)
+
+Apenas operações com NID, devo deletar o que dupliquei ou ajustar para usar strings ?
+
+DER-encoded ASN.1 string, the function ensures that these curve identifiers can be consistently and portably used in cryptographic contexts,
+such as storing them in a PKCS#11 token or communicating them between different cryptographic systems. This is particularly important for
+edwards and curve types of elliptic curves, which are commonly used for digital signatures and key exchange, respectively.
+
+Vou ter que definir as strings do SLH-DSA no pkcs11-tool ?
+
+Duplicado com if defined() || defined()
+
+procurar aonde são usadas:
+```cpp
+	ByteString oid2ByteString(int nid);
+	int byteString2oid(const ByteString& byteString);
+```
+## crypto/CMakeLists.txt
+
+Added the 6 *.cpp files of SLH-DSA

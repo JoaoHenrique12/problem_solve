@@ -5,6 +5,9 @@
 entrypoint files: 
   acx_crypto_backend.m4
   acx_openssl_eddsa.m4
+crypto:
+  EDPrivateKey.cpp
+  EDPublicKey.cpp
    src
   │  bin
   │ └  util
@@ -55,14 +58,6 @@ Added on general
             EDPrivateKey.cpp
             EDPublicKey.cpp
 --------------------------------------------------
-
-                        OSSLECDH.cpp
-                        OSSLECDSA.cpp
-                        OSSLECKeyPair.cpp
-
-                        OSSLECPrivateKey.cpp
-                        OSSLECPublicKey.cpp
-
 
 :eyes:
                         OSSLEDDSA.cpp
