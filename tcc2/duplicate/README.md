@@ -101,3 +101,118 @@ procurar aonde são usadas:
 ## crypto/CMakeLists.txt
 
 Added the 6 *.cpp files of SLH-DSA
+- SLH(Private|Public)Key
+- OSSLSLH(Public|Private)Key
+- OSSLSLHKeyPair
+- OSSLEDDSA
+
+## P11Objects.(cpp|h)
+
+```cpp
+//TODO:  Incomplete task, when add on pkcs11.h
+// update CKK_EC_EDWARDS here either, both init fn.
+```
+
+
+### P11Attributes.(cpp|h)
+
+PTAL -> Usa P11Attributes.h, que define, em algum lugar EC_PARAMS.
+
+P11Attributes.h -> Mecanismos, atributos de EC.
+
+P11Attributes.cpp
+
+Search keys: CKA_EC_PARAMS, CKA_EC_POINT
+
+L2220
+
+
+Sem referencia a ED, EDDSA, EDWARDS.
+
+### OSObjects.h
+
+Nothing to do.
+
+### pkcs11.h
+
+Just a note, without direct import
+CKK_ -> Key type
+usa a definição (pkcs11.h -> CKK_EC_EDWARDS)
+
+### Info
+
+BaseClass is P11Object -> attributes map ?
+
+```cpp
+	std::map<CK_ATTRIBUTE_TYPE, P11Attribute*> attributes;
+```
+
+P11Object uses -> OSObject (object storage.)
+
+P11EDPrivateKeyObj::init -> class P11SLHPrivateKeyObj : public P11PrivateKeyObj
+P11EDPublicKeyObj::init -> class P11SLHPublicKeyObj : public P11PrivateKeyObj
+
+#### P11ED(Public|Private)KeyObj::init
+
+-> CKK_VENDOR_DEFINED, como fazer as minhas proprias definicoes ?
+-> As definicoes de atributos de curva eliptica aparecem aqui.
+```cpp
+	// Create attributes
+	P11Attribute* attrEcParams = new P11AttrEcParams(osobject,P11Attribute::ck3);
+	P11Attribute* attrEcPoint = new P11AttrEcPoint(osobject);
+```
+
+## pkcs11.h
+
+### Ideias
+
+Duplicar as variaveis com os mesmos valores ? Pode ser que dê algum
+conflito em algum lugar...
+
+Adicionar novas variaveis e manter os apontamentos que EDDSA usa.
+Resultaria em mais trabalho posterior.
+
+### Constants found.
+
+```cpp
+// Curva eliptica:
+#define CKA_ECDSA_PARAMS		(0x180UL)
+#define CKA_EC_PARAMS			(0x180UL)
+#define CKA_EC_POINT			(0x181UL)
+
+
+/* From version 3.0 */
+#define CKM_EC_EDWARDS_KEY_PAIR_GEN	(0x1055UL)
+#define CKM_EDDSA			(0x1057UL)
+
+#define CKK_EC_EDWARDS		(0x40UL)
+
+```
+#### CKA_ECDSA_PARAMS
+
+É o mesmo valor dos parâmetros de EC_PARAMS.
+Se eu for criar um específico para SLH_DSA vou ter que investigar
+mais EC_PARAMS.
+
+- DBObject.cpp
+
+#### CKA_EC_PARAMS
+
+Encontrado em diversos lugares:
+- dump/tables.h
+- SoftHSM.cpp
+- P11Attributes
+- util/softhsm2-util-ossl.cpp
+
+#### CKM_EC_EDWARDS_KEY_PAIR_GEN | CKM_EDDSA
+
+- dump/tables.h
+- SoftHSM.cpp
+
+#### CKK_EC_EDWARDS
+
+- P11Objects.cpp
+- SoftHSM.cpp
+- dump/tables.h
+- util/softhsm2-util-ossl.cpp
+
