@@ -237,3 +237,67 @@ switch (EVP_PKEY_type(EVP_PKEY_id(pkey)))
 ```
 
 ## SoftHSM.(cpp|h)
+
+### SoftHSM.h
+
+Não foi alterado, só tem uma definição de função de derivação de chave.
+
+### SoftHSM.cpp
+
+Existem 20 definições WITH_EDDSA :') .
+
+- Definição de derivação de chave. (não alterado)
+- Definição de geração de par de chave + mecanismo. (duplicado)
+#### C_GetMechanismInfo
+- Tem a definição de tamanho mínimo e máximo, não sei se mantem, por hora (duplicado) com
+adição de variável para slhdsa.
+- Ele faz isso na cryptofactory para adicionar o algoritmo ?
+	CryptoFactory::i()->recycleAsymmetricAlgorithm(slhdsa); (duplicado)
+- Derivação de chave (não alterado).
+- switch case para inicialização de flags, aqui define de novo geração de par de chave + mecanismo +
+flags de assinatura e verificação. (duplicado)
+#### SoftHSM::AsymSignInit
+- cria uma variável bool isSLHDSA (duplicado)
+- switch case, ativa a variável caso CKM_* seja o dele e diz que não suporta assinatura multipart (duplicado)
+- cria um if para verificar se esse que é o mecanismo usado tive que criar duas funções aqui (SoftHSM::getSLHPrivateKey,
+SoftHSM::getSLHPublicKey) e adicionar no SoftHSM.h (import dos .h de pub/priv de SLH-DSA) 
+(:thinking: colocaram o mesmo código para funções com nomes diferentes, por que ?).
+#### SoftHSM::AsymVerifyInit
+NOTA: Nem li o código ainda, mas acho que vai ser a mesma coisa que aconteceu no SignInit
+
+Nota confirmada.
+- ref 1 (duplicado)
+- ref 2 (duplicado)
+- ref 3 (duplicado)
+
+#### SoftHSM::C_GenerateKeyPair
+
+- case CKM_ key_type = CKK_EC_EDWARDS (duplicado)
+
+#### SoftHSM::C_WrapKey
+
+- case: não é usado para assinar/verificar (não alterado)
+- outro case: (não alterado)
+
+#### SoftHSM::C_UnwrapKey
+
+- case: não é usado para assinar/verificar (não alterado)
+
+#### SoftHSM::C_DeriveKey
+
+- case: não é usado para assinar/verificar (não alterado)
+#if defined(WITH_ECC) || defined(WITH_EDDSA)
+		case CKM_ECDH1_DERIVE:
+#endif
+
+- outro case com ecc (não alterado)
+  - tá dentro do case a cima (não alterado)
+
+#### SoftHSM::deriveEDDSA
+
+- Não é usado para assinar/verificar (não alterado)
+
+
+#### Notas
+
+CryptoFactory::i() -> retorna uma instancia (ossl|botan) de cryptofactor (singleton).
