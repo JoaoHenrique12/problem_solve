@@ -1,5 +1,9 @@
 # Available mechanisms with openssl 3.5.1
 
+```bash
+pkcs11-tool --module /usr/local/lib/softhsm/libsofthsm2.so   --login --pin 0000 --list-mechanism
+```
+
 ```
 Supported mechanisms:
   AES-CBC, keySize={16,32}, encrypt, decrypt, wrap
