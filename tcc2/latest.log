@@ -1,0 +1,64 @@
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(6181): INIT public key extractObjectInformation (CKM_SLH_KEY_PAIR_GEN, CKK_SLHDSA)
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(259): Extracted CKA_TOKEN
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(276): (class = 0, key_type = 0, cert_type = 0, private = 0, isOnToken=1, isPrivate=0)
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(6202): END public key extractObjectInformation (CKM_SLH_KEY_PAIR_GEN, CKK_SLHDSA)
+
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(6209): INIT private key extractObjectInformation (CKM_SLH_KEY_PAIR_GEN, CKK_SLHDSA)
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(259): Extracted CKA_TOKEN
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(276): (class = 0, key_type = 0, cert_type = 0, private = 0, isOnToken=1, isPrivate=1)
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(6229): END private key extractObjectInformation (CKM_SLH_KEY_PAIR_GEN, CKK_SLHDSA)
+
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(10047): Extracted public key params <06032B6570>
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(10058): seted params for EC in SLH-DSA
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: OSSLSLHDSA.cpp(247): SLH-DSA nid 1087
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: OSSLSLHDSA.cpp(277): INIT PublicKey.setFromOSSL
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: OSSLSLHDSA.cpp(279): END PublicKey.setFromOSSL
+
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: OSSLSLHDSA.cpp(281): INIT Private.setFromOSSL
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: OSSLSLHDSA.cpp(283): END Private.setFromOSSL
+
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(10071): INIT Get Public/Private Key
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(10074): END Get Public/Private Key
+
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(10111): INIT PublicKey CreateObject
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(12575): INIT CreateObject
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(12578): isInitialised OK
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(12581): template OK
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(12583): phObject OK
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(12588): session OK
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(12593): slot OK
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(12598): token OK
+
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(12601): INIT wheird extraction with RSA
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(235): Extracted CKA_CLASS
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(259): Extracted CKA_TOKEN
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(266): Extracted CKA_PRIVATE
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(243): Extracted CKA_KEY_TYPE
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(276): (class = 1, key_type = 1, cert_type = 0, private = 1, isOnToken=1, isPrivate=0)
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(12614): END wheird extraction with RSA
+
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(12627): checked user credentials OK
+
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(12629): INIT change order of attributes
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(12649): DEFAULT found
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(12649): DEFAULT found
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(12649): DEFAULT found
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(12649): DEFAULT found
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(12649): DEFAULT found
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(12649): DEFAULT found
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(12649): DEFAULT found
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(12649): DEFAULT found
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(12658): END change order of attributes
+
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(12660): objClass = 2, eq CKO_PRIVATE_KEY = 0, eq CKO_PUBLIC_KEY = 1
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(12666): created newP11Object OK
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(12672): try create object on TOKEN
+
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: P11Objects.cpp(947): INIT P11SLHPublicKeyObj TODO
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: P11Objects.cpp(981): END P11SLHPublicKeyObj
+
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(12686): created object OK
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: P11Objects.cpp(192): INIT saveTemplate, OBJECT_OP_GENERATE 1, isPrivate 0
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: P11Objects.cpp(197): osobject is not NULL and started transaction OK
+Sep 15 00:53:37 d81cdbf26b22 user.err a.out: P11Objects.cpp(231): ATTR is NULL for attribute type 0x80000030, abortTransaction
+Sep 15 00:53:37 d81cdbf26b22 user.info a.out: SoftHSM.cpp(10113): END PublicKey CreateObject
