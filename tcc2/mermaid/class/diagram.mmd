@@ -1,37 +1,14 @@
 classDiagram
     class ByteString {
-        +ByteString()
-        +ByteString(const unsigned char* bytes, const size_t bytesLen)
-        +ByteString(const char* hexString)
-        +ByteString(const unsigned long longValue)
-        +ByteString(const ByteString& in)
-        +~ByteString()
-        +operator=(const ByteString& in) ByteString&
-        +operator+=(const ByteString& append) ByteString&
-        +operator+=(const unsigned char byte) ByteString&
-        +substr(const size_t start, const size_t len = SIZE_T_MAX) const ByteString
-        +operator[](size_t pos) unsigned char&
-        +byte_str() unsigned char*
-        +const_byte_str() const const unsigned char*
         +hex_str() const string
-        +long_val() const unsigned long
-        +firstLong() unsigned long
-        +split(size_t len) ByteString
         +bits() const size_t
         +size() const size_t
         +resize(const size_t newSize) void
-        +wipe(const size_t newSize = 0) void
-        +operator==(const ByteString& compareTo) const bool
-        +operator!=(const ByteString& compareTo) const bool
-        +operator^=(const ByteString& rhs) ByteString&
         +serialise() const virtual ByteString
         +chainDeserialise(ByteString& serialised) static ByteString
         -byteString vector<unsigned char>
     }
     
-    ByteString "1" -- "1" ByteString: operator+
-    ByteString "1" -- "1" ByteString: operator^
-
     class Serialisable {
         <<abstract>>
         +serialise() const virtual ByteString
@@ -40,7 +17,6 @@ classDiagram
 
     class PrivateKey {
         <<abstract>>
-        +~PrivateKey()
         +isOfType(const char* inType) const virtual bool
         +getBitLength() const virtual unsigned long
         +getOutputLength() const virtual unsigned long
@@ -52,7 +28,6 @@ classDiagram
 
     class PublicKey {
         <<abstract>>
-        +~PublicKey()
         +isOfType(const char* inType) const virtual bool
         +getBitLength() const virtual unsigned long
         +getOutputLength() const virtual unsigned long
@@ -61,15 +36,11 @@ classDiagram
 
     class EDPrivateKey {
         +type: const char*
-        +isOfType(const char* inType) virtual bool
-        +getBitLength() const virtual unsigned long
-        +getOutputLength() const virtual unsigned long
         +getOrderLength() const virtual unsigned long
         +setK(const ByteString& inK) virtual void
         +setEC(const ByteString& inEC) virtual void
         +getK() const virtual const ByteString&
         +getEC() const virtual const ByteString&
-        +serialise() const virtual ByteString
         +deserialise(ByteString& serialised) virtual bool
         #k ByteString
         #ec ByteString
@@ -78,15 +49,11 @@ classDiagram
 
     class EDPublicKey {
         +type: const char*
-        +isOfType(const char* inType) virtual bool
-        +getBitLength() const virtual unsigned long
-        +getOutputLength() const virtual unsigned long
         +getOrderLength() const virtual unsigned long
         +setEC(const ByteString& inEc) virtual void
         +setA(const ByteString& inA) virtual void
         +getEC() const virtual const ByteString&
         +getA() const virtual const ByteString&
-        +serialise() const virtual ByteString
         +deserialise(ByteString& serialised) virtual bool
         #ec ByteString
         #a ByteString
@@ -96,14 +63,6 @@ classDiagram
     class OSSLEDPrivateKey {
         +OSSLEDPrivateKey()
         +OSSLEDPrivateKey(const EVP_PKEY* inPKEY)
-        +~OSSLEDPrivateKey() virtual
-        +type: const char*
-        +isOfType(const char* inType) virtual bool
-        +getOrderLength() const virtual unsigned long
-        +setK(const ByteString& inK) virtual void
-        +setEC(const ByteString& inEC) virtual void
-        +PKCS8Encode() virtual ByteString
-        +PKCS8Decode(const ByteString& ber) virtual bool
         +setFromOSSL(const EVP_PKEY* inPKEY) virtual void
         +getOSSLKey() EVP_PKEY*
         -nid int
@@ -115,12 +74,6 @@ classDiagram
     class OSSLEDPublicKey {
         +OSSLEDPublicKey()
         +OSSLEDPublicKey(const EVP_PKEY* inPKEY)
-        +~OSSLEDPublicKey() virtual
-        +type: const char*
-        +isOfType(const char* inType) virtual bool
-        +getOrderLength() const virtual unsigned long
-        +setEC(const ByteString& inEC) virtual void
-        +setA(const ByteString& inA) virtual void
         +setFromOSSL(const EVP_PKEY* inPKEY) virtual void
         +getOSSLKey() EVP_PKEY*
         -nid int
@@ -143,10 +96,6 @@ classDiagram
     class OSSLEDKeyPair {
         +setPublicKey(OSSLEDPublicKey& publicKey) void
         +setPrivateKey(OSSLEDPrivateKey& privateKey) void
-        +getPublicKey() virtual PublicKey*
-        +getConstPublicKey() const virtual const PublicKey*
-        +getPrivateKey() virtual PrivateKey*
-        +getConstPrivateKey() const virtual const PrivateKey*
         -pubKey OSSLEDPublicKey
         -privKey OSSLEDPrivateKey
     }
@@ -164,7 +113,6 @@ classDiagram
         +type: const char*
         +setEC(const ByteString& inEC) void
         +getEC() const const ByteString&
-        +areOfType(const char* inType) virtual bool
         +serialise() const virtual ByteString
         +deserialise(ByteString& serialised) virtual bool
         -ec ByteString
@@ -215,44 +163,17 @@ classDiagram
         EDDSA
         SLHDSA
     }
-
-    class AsymRSAMGF {
-        <<enumeration>>
-        Unknown
-        MGF1_SHA1
-        MGF1_SHA224
-        MGF1_SHA256
-        MGF1_SHA384
-        MGF1_SHA512
-    }
-
-    class RSA_PKCS_PSS_PARAMS {
-        +hashAlg HashAlgo::Type
-        +mgf AsymRSAMGF::Type
-        +sLen size_t
-    }
-
+    %% Update/Final was removed from this class
     class AsymmetricAlgorithm {
         <<abstract>>
-        +AsymmetricAlgorithm()
-        +~AsymmetricAlgorithm() virtual
         +sign(PrivateKey* privateKey, const ByteString& dataToSign, ByteString& signature, const AsymMech::Type mechanism, const void* param = NULL, const size_t paramLen = 0) virtual bool
         +signInit(PrivateKey* privateKey, const AsymMech::Type mechanism, const void* param = NULL, const size_t paramLen = 0) virtual bool
-        +signUpdate(const ByteString& dataToSign) virtual bool
-        +signFinal(ByteString& signature) virtual bool
         +verify(PublicKey* publicKey, const ByteString& originalData, const ByteString& signature, const AsymMech::Type mechanism, const void* param = NULL, const size_t paramLen = 0) virtual bool
         +verifyInit(PublicKey* publicKey, const AsymMech::Type mechanism, const void* param = NULL, const size_t paramLen = 0) virtual bool
-        +verifyUpdate(const ByteString& originalData) virtual bool
-        +verifyFinal(const ByteString& signature) virtual bool
-        +encrypt(PublicKey* publicKey, const ByteString& data, ByteString& encryptedData, const AsymMech::Type padding) virtual bool
-        +decrypt(PrivateKey* privateKey, const ByteString& encryptedData, ByteString& data, const AsymMech::Type padding) virtual bool
-        +wrapKey(PublicKey* publicKey, const ByteString& data, ByteString& encryptedData, const AsymMech::Type padding) bool
-        +unwrapKey(PrivateKey* privateKey, const ByteString& encryptedData, ByteString& data, const AsymMech::Type padding) bool
         +generateKeyPair(AsymmetricKeyPair** ppKeyPair, AsymmetricParameters* parameters, RNG* rng = NULL) virtual bool
         +getMinKeySize() virtual unsigned long
         +getMaxKeySize() virtual unsigned long
         +generateParameters(AsymmetricParameters** ppParams, void* parameters = NULL, RNG* rng = NULL) virtual bool
-        +deriveKey(SymmetricKey **ppSymmetricKey, PublicKey* publicKey, PrivateKey* privateKey) virtual bool
         +reconstructKeyPair(AsymmetricKeyPair** ppKeyPair, ByteString& serialisedData) virtual bool
         +reconstructPublicKey(PublicKey** ppPublicKey, ByteString& serialisedData) virtual bool
         +reconstructPrivateKey(PrivateKey** ppPrivateKey, ByteString& serialisedData) virtual bool
@@ -260,42 +181,14 @@ classDiagram
         +newPublicKey() virtual PublicKey*
         +newPrivateKey() virtual PrivateKey*
         +newParameters() virtual AsymmetricParameters*
-        +recycleKeyPair(AsymmetricKeyPair* toRecycle) virtual void
-        +recycleParameters(AsymmetricParameters* toRecycle) virtual void
-        +recyclePublicKey(PublicKey* toRecycle) virtual void
-        +recyclePrivateKey(PrivateKey* toRecycle) virtual void
-        +recycleSymmetricKey(SymmetricKey* toRecycle) virtual void
         #currentPublicKey PublicKey*
         #currentPrivateKey PrivateKey*
         #currentMechanism AsymMech::Type
         #currentPadding AsymMech::Type
         -currentOperation int
-        -isWrappingMech(AsymMech::Type padding) bool
     }
 
     class OSSLEDDSA {
-        +~OSSLEDDSA() virtual
-        +sign(PrivateKey* privateKey, const ByteString& dataToSign, ByteString& signature, const AsymMech::Type mechanism, const void* param = NULL, const size_t paramLen = 0) virtual bool
-        +signInit(PrivateKey* privateKey, const AsymMech::Type mechanism, const void* param = NULL, const size_t paramLen = 0) virtual bool
-        +signUpdate(const ByteString& dataToSign) virtual bool
-        +signFinal(ByteString& signature) virtual bool
-        +verify(PublicKey* publicKey, const ByteString& originalData, const ByteString& signature, const AsymMech::Type mechanism, const void* param = NULL, const size_t paramLen = 0) virtual bool
-        +verifyInit(PublicKey* publicKey, const AsymMech::Type mechanism, const void* param = NULL, const size_t paramLen = 0) virtual bool
-        +verifyUpdate(const ByteString& originalData) virtual bool
-        +verifyFinal(const ByteString& signature) virtual bool
-        +encrypt(PublicKey* publicKey, const ByteString& data, ByteString& encryptedData, const AsymMech::Type padding) virtual bool
-        +decrypt(PrivateKey* privateKey, const ByteString& encryptedData, ByteString& data, const AsymMech::Type padding) virtual bool
-        +generateKeyPair(AsymmetricKeyPair** ppKeyPair, AsymmetricParameters* parameters, RNG* rng = NULL) virtual bool
-        +getMinKeySize() virtual unsigned long
-        +getMaxKeySize() virtual unsigned long
-        +deriveKey(SymmetricKey **ppSymmetricKey, PublicKey* publicKey, PrivateKey* privateKey) virtual bool
-        +reconstructKeyPair(AsymmetricKeyPair** ppKeyPair, ByteString& serialisedData) virtual bool
-        +reconstructPublicKey(PublicKey** ppPublicKey, ByteString& serialisedData) virtual bool
-        +reconstructPrivateKey(PrivateKey** ppPrivateKey, ByteString& serialisedData) virtual bool
-        +reconstructParameters(AsymmetricParameters** ppParams, ByteString& serialisedData) virtual bool
-        +newPublicKey() virtual PublicKey*
-        +newPrivateKey() virtual PrivateKey*
-        +newParameters() virtual AsymmetricParameters*
     }
 
     AsymmetricAlgorithm <|-- OSSLEDDSA
