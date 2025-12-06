@@ -2,6 +2,8 @@
 
 [fork](https://github.com/JoaoHenrique12/DescomplicandoKubernetes)
 
+[k9](https://github.com/derailed/k9s)
+
 ## Kubectl
 
 ```bash
