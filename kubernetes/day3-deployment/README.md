@@ -5,6 +5,10 @@ Deployment é um objeto que representa uma aplicação.
   - Faz rollback
   - Ao criar um Deployment um ReplicaSet é criado também.
 
+Você não pode criar um único Deployment que gerencie dois tipos diferentes de Pods. Um Deployment é projetado para gerenciar um conjunto
+de réplicas idênticas de um único modelo de Pod, definido na seção template. Se você precisar de dois tipos diferentes de Pods, a maneira
+correta no Kubernetes é criar dois Deployments separados
+
 ## Update Deployments
 
 ### RollingUpdate
