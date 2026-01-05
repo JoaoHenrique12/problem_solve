@@ -19,3 +19,11 @@ k get services
 k expose pod meu-nginx
 k get services
 ```
+
+### Port-forward
+
+```bash
+k port-forward service/giropops-senhas 5000:5000
+k port-forward deployment/giropops-senhas 5000:5000
+k port-forward pod/giropops-senhas 5000:5000
+```
