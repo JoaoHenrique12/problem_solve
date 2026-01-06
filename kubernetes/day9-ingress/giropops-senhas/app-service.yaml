@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: giropops-senhas
+  labels: # Normal selecto for this service
+    app: giropops-senhas
+spec:
+  selector: # The real thing to say to service wich pods are in routing schema.
+    app: giropops-senhas
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
+      name: tcp-app
+  type: ClusterIP

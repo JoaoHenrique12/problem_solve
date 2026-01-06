@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: # labels for the deployment object itself. They are not mandatory.
+  labels:
+    app: giropops-senhas
+  name: giropops-senhas
+spec:
+  replicas: 2
+  selector:
+    matchLabels: # this tells the deployment which pods it is responsible for. Must match labels in template
+      app: giropops-senhas
+  template:
+    metadata:
+      labels: # These labels will be stamped onto every pod. Its mandatory, service will search it.
+        app: giropops-senhas
+    spec:
+      containers:
+      - image: linuxtips/giropops-senhas:1.0
+        name: giropops-senhas
+        env:
+        - name: REDIS_HOST
+          value: redis-service
+        ports:
+        - containerPort: 5000
+        imagePullPolicy: Always

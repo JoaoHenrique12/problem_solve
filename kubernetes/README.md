@@ -11,9 +11,13 @@ k get nodes
 k get pods
 k get namespaces
 k get services
+
+# contexts, multiple clusters kubernetes
+k config get-contexts
+k config current-context
 ```
 
-### Expondo o pod
+### Expondo o pod (service)
 
 ```bash
 k expose pod meu-nginx
