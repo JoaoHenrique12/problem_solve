@@ -327,3 +327,263 @@ Quality
   - message
 - avoid unnecessary data transfer (decide for some instances of)
   - operation
+
+## Identification and Authentication of the API Client
+
+In summary, client identification and authentication are the foundations for
+achieving certain security qualities and support many techniques to establish QoS
+and cost control.
+
+Client identification and authentication:
+- do nothing;
+- api-key;
+- api-key combined with secret key;
+- authorization protocol;
+- authentication protocol;
+
+Commented topics:
+- Oauth2.0
+- OpenID Connect
+- Kerberos
+- LDAP
+
+API Keys help to establish basic security. Although they
+require following a registration process, API Keys bring only a slight degradation in
+terms of ease of use for clients once they have been obtained (compared to no secure
+identification and authentication). The other options are less easy to use, as they
+require dealing with more complex protocols and setting up the required services
+and infrastructure. The management of user account credentials required in authen-
+tication and authorization protocols can be tedious both on the client and provider
+side; this is avoided in all options using API Keys, including its combination with a
+secret key.
+
+## Metering and Charging for API Consumption
+
+
+Problem: How can the API provider meter API service consumption and charge for it?
+
+Solution: Assign a Pricing Plan for the API usage to the API Description that is used
+to bill API customers, advertisers, or other stakeholders accordingly. Define
+and monitor metrics for measuring API usage, such as API usage statistics per
+operation.
+
+Metering and Charging for API Consumption:
+- Consider if not decided yet about Client identification and Authentication
+- Do nothing
+- Pricing Plan:
+  - Rate Limit
+  - Authentication
+
+
+Pricing Plan:
+- Freemium Model
+- Market-based Pricing
+- Usage-based Pricing
+- Flat-Rate Subscription
+
+Preventing API Clients from Excessive API Usage:
+
+Problem: How can the API provider prevent API clients from excessive API usage?
+Solution: Introduce and enforce a Rate Limit to safeguard against API clients that overuse
+the API.
+
+For example, if all clients are in-house clients or trusted partners, the overhead of a
+Rate Limit might not be justified.
+
+Preventing API Clients From Excessive Usage:
+- Consider if not decided yet about Client identification and Authentication
+- Do Nothing
+- Rate Limit
+  - Can use Authentication
+
+
+Introducing Rate Limits produces costs and can be perceived negatively by clients.
+Thus, it has to be judged whether the risks of API abuse imposed by a few clients
+are higher than the risks and costs associated with introducing Rate Limits for
+all clients.
+
+Service Layer Agreement (SLA)
+
+## Communication of Errors
+
+However, rather elaborate error messages can reveal information that
+is problematic with regard to security, as disclosing more information
+about system internals opens up attack vectors.
+
+Communication of Errors:
+- Do Nothing
+- Error Reporting
+- Protocol-level error codes
+
+## Explicit Context Representation
+
+Exchange of Context Information Required:
+- Context Representation
+- Do Nothing
+
+## Deciding For API Quality Improvements
+
+However, a combination of two or even three of the patterns increases the
+complexity of the API design and programming substantially for rather little
+gains, as all four patterns influence a similar set of desired qualities positively.
+
+Avoid Unnecessary Data Transfer:
+- Do nothing
+- Wish List
+- Wish Template
+- Conditional Request
+- Request Bundle
+
+
+### Pagination Decision
+
+Subset of High Number of Data Records with the Same Structure Required
+- Parameter Tree
+- Parameter Forest
+- Do nothing
+- Pagination
+  - Page-Based Pagination
+  - Cursor-Based Pagination
+  - Offset-Based Pagination: 
+  - Time-Based Pagination
+
+Pagination can be used for:
+- Parameter Tree
+- Parameter Forest
+- Atomic Parameter List
+
+Pagination Methods:
+- Offset-based Pagination: Compared to simple pages, an offset specified by
+the API client enables more flexibility in controlling the number of requested
+results or changes in the page size.
+- Cursor-Based Pagination: This variant does not rely on the index of an element
+but instead on a cursor that the API client can control.
+- Time-Based Pagination: This variant is similar to Cursor-Based Pagination but
+uses timestamps instead of cursors to request chunks!!!
+
+From a security standpoint, retrieving and encoding large data sets can incur
+high effort and cost on the provider side and can thus open up an attack vector for a
+denial-of-service attack.
+
+#### Postgresql Implementations
+
+The first thing at mind may be the following:
+
+```sql
+BEGIN;
+
+DECLARE my_search_cursor CURSOR FOR 
+SELECT * FROM large_table ORDER BY id;
+
+FETCH 10 FROM my_search_cursor;
+
+FETCH 10 FROM my_search_cursor;
+
+CLOSE my_search_cursor;
+COMMIT;
+```
+
+However, implement it require a stateful connection,
+wich is impratical for apis and basic web pages.
+
+The second option is use limit + offset.
+
+```sql
+SELECT * FROM your_table_name
+ORDER BY id ASC  -- Or any unique column
+LIMIT 10 
+OFFSET 20;
+```
+
+Wich is simple, and very easy to use. However, the offset is calculated by
+reading the lines skiped, therefore it may cause issues on large sets PostgreSQL
+still has to "read" through the skipped rows even though it doesn't show them to you.
+
+For massive datasets, "Keyset Pagination" (using WHERE id > last_seen_id)
+is often faster. However the api caller must inform the last_seen_id, which may be
+a bad thing for users.
+
+### Other Means of Avoiding Unnecessary Data Transfer
+
+#### Wish List
+
+This may be implemented using pydantic + model_dump and filter fields to show only desired ones.
+
+- Wish List: A possible way to solve this problem is to let the client inform the provider
+at runtime about its data fetching preferences. A simple option to do this is to let the client
+send a list of its desires.
+- Wish Template: An alternative solution that works better for complex parameters is to let the
+client send a template (or mock object) expressing the wishes as examples in its request.
+
+## Handling Referenced Data in Messages
+
+Not every Data Element in a message can be represented as a plain data record, as
+some data records contain references to other data records. An important question is
+how these local data references should be reflected in the API; answers to it determine
+the API granularity and its coupling characteristics.
+
+Data Element -> Handlig of Referenced Data
+- Embedded Entity
+- Linked Information Holder
+  - Link Lookup Resource
+  - Link Element
+
+Embedded Entity:
+
+Problem: How can one avoid sending multiple messages when their receivers require
+insights about multiple related information elements?
+
+Solution: For any data relationship that the client wants to follow, embed a Data Element
+in the request or response message that contains the data of the target end of the
+relationship. Place this Embedded Entity inside the representation of the source
+of the relationship.
+
+Linked Information Holder:
+
+Problem: How can messages be kept small even when an API deals with multiple
+information elements that reference each other?
+
+Solution: Add a Link Element to messages that pertain to multiple related information
+elements. Let this Link Element reference another API endpoint that represents
+the linked element.
+
+As decision drivers, performance and scalability often play a major role. Both
+message size and the number of calls required to perform an integration should be
+low, but these two desires stand in conflict with each other.
+
+In terms of data privacy, a relationship source and target might have different
+protection needs for example, a person and the credit card information belonging
+to this person. This has to be considered, for instance, before embedding the
+credit card information in a message requesting the persons data.
+
+## Decisions about API Evolution
+
+To be successful, APIs should expose stable contracts serving as a baseline for build-
+ing applications on top of them; developer expectations and delivery guarantees have
+to be balanced.
+
+establish rules and policies to ensure that (1) the provider can improve and extend the
+API and its implementation, and (2) the client can keep functioning with no or few
+required changes for as long as possible.
+
+### Strategies for Commissioning and Decommissioning
+
+Many API providers are eager to bring new versions to production quickly. However,
+they often overlook the importance of the ability to decommission old versions in
+order not to be overwhelmed with maintenance effort and resulting cost.
+
+Version Introducing and Decommissioning
+- Two in Production
+- Limited Lifetime Guarantee
+- Aggressive Obsolescence: Announce a decommissioning date to be set as early as possible for the entire API
+or its obsolete parts. Remove the deprecated API parts and the support for it as soon as the deadline
+has passed.
+
+Pattern: experimental preview
+
+Problem: How can providers make the introduction of a new API (version) less risky for
+their clients and obtain early adopter feedback without having to freeze the API
+design prematurely?
+Solution: Provide access to an API on a best-effort base without making any commitments
+about the functionality offered, stability, and longevity. Clearly and explicitly
+articulate this lack of API maturity to manage client expectations.
