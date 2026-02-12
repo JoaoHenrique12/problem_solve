@@ -36,7 +36,7 @@ curl <ip-found>/giropops-senhas
 k delete ingress --all
 
 # here the app should works
-k apply -f ingress-3-work-ok.yaml
+k apply -f ingress-3-giropops-ok.yaml
 
 # create nginx with ingress.
 
