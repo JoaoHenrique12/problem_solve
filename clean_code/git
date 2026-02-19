@@ -12,6 +12,9 @@ git show HEAD~1:redes/projeto/server.c
 git log --all --decorate --oneline --graph
   -> Mostra a árvore dos commits.
 
+git log --flow [arquivo]
+  -> Mostra as alteracoes daquele arquivo
+
 git reflog 
   -> Mostra hashes de comits e histórico de ações realizadas no
 repositório. Se vc está usando este comando é porque provávelmente fez
