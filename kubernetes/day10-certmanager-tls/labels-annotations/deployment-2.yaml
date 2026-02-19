@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: giropops-senhas
+  labels:
+    app: giropops
+    descomplicando: kubernetes
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: giropops
+  template:
+    metadata:
+      labels:
+        app: giropops
+        descomplicando: kubernetes
+    spec:
+      containers:
+      - name: giropops-senhas
+        image: linuxtips/giropops-senhas:1.0
+        ports:
+        - containerPort: 5000
