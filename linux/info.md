@@ -11,6 +11,18 @@ aptitude
 
 ## Hard link & Symbolic link
 
+- Every time you create a folder, it creates two hard link '.' for itself, and '..' for it's parent
+directory;
+- Hard links points for inodes, sym links points to names of files;
+- You can't create a hard link for a directory, and it is not possible to avoid:
+  - problems with recursions (commands like find or backups would get insane with it)
+  - the three direcotry would be broke
+
+
+```bash
+ln -s [who is the link] [place for link]
+```
+
 ### Symbolic link
 
 The easiest way to understand what a symbolic link is in Linux is to compare it to the
