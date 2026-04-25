@@ -34,11 +34,11 @@ kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/
 
 ```
 # dada a instalacao do certmanager
-k apply -f cluster-issuer.yaml
-k apply -f issuer.yaml
+k apply -f certmanager/cluster-issuer.yaml
+k apply -f certmanager/issuer.yaml
 
 # crie o ingress
-k apply -f ingress-cluster-issuer.yaml
+k apply -f certmanager/ingress-cluster-issuer.yaml
 
 # validando se o certificado foi criado
 k get certificates
@@ -89,6 +89,22 @@ k label|annotate pods --selector app=giropops complicando-
 
 # Ingress configs
 
-```
-k apply -f ingress/ingress-authenticate.yaml
-```
+## Affinity
+
+Direcionar o mesmo usuário para o mesmo pod da aplicação.
+
+- [cookie](ingress/affinity-cookie.yaml)
+- [hash](ingress/affinity-hash.yaml)
+
+## Canary
+
+Além do ingress há de ser alterada a maneira de fazer o deploy, usando ferramentas como
+Argo Rollouts ou Flagger.
+
+É uma boa prática usar affinity do ingress junto ao canary para evitar o efeito pisca-pisca.
+
+- [canary](ingress/canary-deploy.yaml)
+
+## Limit Requisitions
+
+- [Limit](ingress/limit.yaml)
