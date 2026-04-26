@@ -25,6 +25,7 @@ k apply -f app-service.yaml
 k apply -f redis-deployment.yaml
 k apply -f redis-service.yaml
 
+minikube addons enable ingress
 minikube tunnel
 
 k apply -f ingress-1.yaml
