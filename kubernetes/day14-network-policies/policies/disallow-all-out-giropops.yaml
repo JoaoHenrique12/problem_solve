@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-same-ns
+  namespace: giropops
+spec:
+  podSelector: {} # Aplica a todos os pods no namespace giropops
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    # Permite tráfego de pods do próprio namespace
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: giropops
+    # Permite tráfego vindo do CoreDNS (kube-system)
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: kube-system
+      podSelector:
+        matchLabels:
+          k8s-app: kube-dns
+    ports:
+      - protocol: TCP
+        port: 80
+      - protocol: TCP
+        port: 5000
