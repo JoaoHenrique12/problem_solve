@@ -4,6 +4,7 @@ metadata:
   labels:
     app: giropops-senhas
   name: giropops-senhas
+  namespace: giropops
 spec:
   replicas: 2
   selector:

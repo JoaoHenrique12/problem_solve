@@ -7,14 +7,23 @@
 ## Kubectl
 
 ```bash
+k api-resources
 k get nodes
 k get pods
 k get namespaces
 k get services
+k get netpol
+k logs -f --tail=20 --prefix <pod-name>
+k logs -f deployment/<deployment-name> --all-pods=true
 
 # contexts, multiple clusters kubernetes
 k config get-contexts
 k config current-context
+```
+
+```bash
+# create a pod for test and delete it after execution
+k run -it --rm --image curlimages/curl curl-client -- sh
 ```
 
 ### Expondo o pod (service)

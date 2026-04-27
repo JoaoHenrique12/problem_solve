@@ -23,11 +23,11 @@ minikube start --cni=calico
 
 ```bash
 k create ns giropops
-k apply -f cluster/giropops-deployment.yaml -n giropops
-k apply -f cluster/giropops-service.yaml -n giropops
-k apply -f cluster/redis-deployment.yaml -n giropops
-k apply -f cluster/redis-service.yaml -n giropops 
-k apply -f cluster/giropops-ingress.yaml -n giropops
+k apply -f cluster/giropops-deployment.yaml
+k apply -f cluster/giropops-service.yaml
+k apply -f cluster/redis-deployment.yaml
+k apply -f cluster/redis-service.yaml
+k apply -f cluster/giropops-ingress.yaml
 # minikube tunnel, ajuste no dns, revisitar day09
 # vi /etc/hosts
 ```
