@@ -16,6 +16,9 @@ k get netpol
 k logs -f --tail=20 --prefix <pod-name>
 k logs -f deployment/<deployment-name> --all-pods=true
 
+# certificate sign request
+kubectl get csr
+
 # contexts, multiple clusters kubernetes
 k config get-contexts
 k config current-context
