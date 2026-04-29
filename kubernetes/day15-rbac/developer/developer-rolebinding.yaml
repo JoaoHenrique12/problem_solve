@@ -1,0 +1,12 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: DeveloperRoleBinding
+  namespace: dev
+subjects:
+- kind: User
+  name: developer # esse nome aque deve ser o mesmo do CN=common_name
+roleRef:
+  kind: Role
+  name: developer
+  apiGroup: rbac.authorization.k8s.io
