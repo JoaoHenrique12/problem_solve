@@ -97,3 +97,37 @@ k get pods -A
 # comando para saber de tudo o que um usuario pode fazer no cluster.
 k auth can-i --list
 ```
+
+## Criando um kubeconfig para um usuario
+
+```bash
+# Define o cluster
+
+k config set-cluster minikube \
+  --server=https://192.168.49.2:8443 \
+  --certificate-authority=/home/hellsank/.minikube/ca.crt \
+  --embed-certs=true \
+  --kubeconfig=platform.conf
+
+# Define as credenciais
+
+k config set-credentials platform \
+  --client-certificate=platform/platform.crt \
+  --client-key=platform/platform.key \
+  --embed-certs=true \
+  --kubeconfig=platform.conf
+
+# Define o contexto
+
+k config set-context platform-context \
+  --cluster=minikube \
+  --user=platform \
+  --namespace=dev \
+  --kubeconfig=platform.conf
+
+# Define o contexto 'platform-context' como o ativo no arquivo
+k config use-context platform-context --kubeconfig=platform.conf
+
+# Get pods
+k get pods --kubeconfig=platform.conf
+```
