@@ -131,3 +131,40 @@ k config use-context platform-context --kubeconfig=platform.conf
 # Get pods
 k get pods --kubeconfig=platform.conf
 ```
+
+## Deletando usuarios
+
+```bash
+k delete csr <csr-name>
+k delete rolebinding <role-bind-name>
+# k config get-contexts
+k config unset users.<user-name>
+```
+
+## ServiceAccounts
+
+```bash
+k apply -f service-account/service-account.yaml
+k get serviceaccounts service-account-example -o yaml
+k apply -f service-account/service-account-secret.yaml
+k get secret service-account-example-token -o jsonpath='{.data.token}' | base64 --decode
+
+k apply -f service-account/service-account-role.yaml
+k apply -f service-account/service-account-rolebinding.yaml
+
+# pod com o service-account
+k apply -f service-account/pod-service-account.yaml
+k exec pod-service-account -- ls /var/run/secrets/kubernetes.io/serviceaccount
+k exec pod-service-account -- cat /var/run/secrets/kubernetes.io/serviceaccount/token
+
+k exec -it pod-service-account -- sh
+# execute este comando dentro do pod
+# curl -k -H "Authorization: Bearer $(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" https://kubernetes.default.svc/api/v1/namespaces/default/pods
+```
+
+```bash
+# removendo service account
+k delete serviceaccount <name>
+k delete secret <secret-name>
+k delete rolebinding <rolebind-name>
+```
