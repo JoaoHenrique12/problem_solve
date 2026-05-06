@@ -72,3 +72,28 @@ k config set-context platform --cluster=minikube --user=platform
 k config use-context platform
 k get pods -A
 ```
+
+```bash
+# admin account
+openssl ecparam -name prime256v1 -genkey -noout -out admin/admin.key
+openssl req -new -key admin/admin.key -out admin/admin.csr -subj "/CN=admin/O=admin"
+cat admin/admin.csr | base64 | tr -d '\n'
+# coloque o output em base64 no request de admin.yaml
+k apply -f admin/admin.yaml
+k certificate approve admin
+k get csr
+k get csr admin -o jsonpath='{.status.certificate}' | base64 --decode > admin/admin.crt
+k apply -f admin/admin-role.yaml
+k apply -f admin/admin-rolebinding.yaml
+k get clusterroles
+k get clusterrolebindings
+
+# adicionar certificados no cluster
+k config set-credentials admin --client-certificate=admin/admin.crt --client-key=admin/admin.key --embed-certs=true
+k config set-context admin --cluster=minikube --user=admin
+k config use-context admin
+k get pods -A
+
+# comando para saber de tudo o que um usuario pode fazer no cluster.
+k auth can-i --list
+```
