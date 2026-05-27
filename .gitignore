@@ -13,3 +13,4 @@ bin/
 env/
 venv/
 .ipynb_checkpoints
+kubernetes/day16-helm/giropops-senhas/
