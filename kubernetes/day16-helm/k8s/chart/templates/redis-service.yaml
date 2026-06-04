@@ -9,4 +9,4 @@ spec:
     - protocol: TCP
       port: {{ .Values.redis.service.port }}
       targetPort: {{ .Values.redis.targetPort }}
-  type: {{ .Values.service.type }}
+  type: {{ .Values.redis.service.type }}

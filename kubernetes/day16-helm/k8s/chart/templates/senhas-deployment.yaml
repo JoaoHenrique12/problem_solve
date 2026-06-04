@@ -5,7 +5,7 @@ metadata:
     app: giropops-senhas
   name: giropops-senhas
 spec:
-  replicas: {{ .Values.giropops-senhas.replicas }}
+  replicas: {{ index .Values "giropops-senhas" "replicas" }}
   selector:
     matchLabels:
       app: giropops-senhas
@@ -15,15 +15,15 @@ spec:
         app: giropops-senhas
     spec:
       containers:
-      - image: {{ .Values.giropops-senhas.iamge }}
-        name: {{ .Values.giropops-senhas.name }}
+      - image: {{ index .Values "giropops-senhas" "image" }}
+        name: {{ index .Values "giropops-senhas" "name" }}
         ports:
-        - containerPort: {{ .Values.giropops-senhas.port }}
+        - containerPort: {{ index .Values "giropops-senhas" "port" }}
         imagePullPolicy: Always
         resources:
           limits:
-            memory: {{ .Values.giropops-senhas.resources.limits.memory }}
-            cpu: {{ .Values.giropops-senhas.resources.limits.cpu }}
+            memory: {{ index .Values "giropops-senhas" "resources" "limits" "memory" }}
+            cpu: {{ index .Values "giropops-senhas" "resources" "limits" "cpu" }}
           requests:
-            memory: {{ .Values.giropops-senhas.resources.requests.memory }}
-            cpu: {{ .Values.giropops-senhas.resources.requests.cpu }}
+            memory: {{ index .Values "giropops-senhas" "resources" "requests" "memory" }}
+            cpu: {{ index .Values "giropops-senhas" "resources" "requests" "cpu" }}

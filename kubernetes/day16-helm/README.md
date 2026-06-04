@@ -7,4 +7,8 @@ que definem a aplicação e um conjunto de templates que definem como a aplicaç
 
 ```bash
 git clone git@github.com:badtuxx/giropops-senhas.git
+
+# Once with chart ready use
+# cd chart/
+helm template --debug .
 ```

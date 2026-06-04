@@ -21,8 +21,8 @@ spec:
           - containerPort: {{ .Values.redis.port }}
         resources:
           limits:
-            memory: {{ .Values.redis.limits.memory }}
-            cpu: {{ .Values.redis.limits.cpu }}
+            memory: {{ .Values.redis.resources.limits.memory }}
+            cpu: {{ .Values.redis.resources.limits.cpu }}
           requests:
-            memory: {{ .Values.redis.requests.memory }}
-            cpu: {{ .Values.redis.requests.cpu }}
+            memory: {{ .Values.redis.resources.requests.memory }}
+            cpu: {{ .Values.redis.resources.requests.cpu }}
