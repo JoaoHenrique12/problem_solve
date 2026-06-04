@@ -11,4 +11,5 @@ git clone git@github.com:badtuxx/giropops-senhas.git
 # Once with chart ready use
 # cd chart/
 helm template --debug .
+helm install giropops-senhas k8s/chart/
 ```
