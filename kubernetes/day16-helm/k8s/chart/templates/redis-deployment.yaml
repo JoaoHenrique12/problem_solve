@@ -5,7 +5,7 @@ metadata:
     app: redis
   name: redis-deployment
 spec:
-  replicas: 1
+  replicas: {{ .Values.redis.replicas }}
   selector:
     matchLabels:
       app: redis
@@ -15,14 +15,14 @@ spec:
         app: redis
     spec:
       containers:
-      - image: redis
+      - image: {{ .Values.redis.image }}
         name: redis
         ports:
-          - containerPort: 6379
+          - containerPort: {{ .Values.redis.port }}
         resources:
           limits:
-            memory: "256Mi"
-            cpu: "500m"
+            memory: {{ .Values.redis.limits.memory }}
+            cpu: {{ .Values.redis.limits.cpu }}
           requests:
-            memory: "128Mi"
-            cpu: "250m"
+            memory: {{ .Values.redis.requests.memory }}
+            cpu: {{ .Values.redis.requests.cpu }}
