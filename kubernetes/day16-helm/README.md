@@ -10,6 +10,11 @@ git clone git@github.com:badtuxx/giropops-senhas.git
 
 # Once with chart ready use
 # cd chart/
-helm template --debug .
+helm template --debug --show-only templates/senhas-service.yaml k8s/chart/
 helm install giropops-senhas k8s/chart/
+helm list -n default # --all-namespaces
+helm get all giropops-senhas
+helm upgrade giropops-senhas k8s/chart/
+helm uninstall giropops-senhas
+# helm create app-name generates a boilerplate for new helms
 ```

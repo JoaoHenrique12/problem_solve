@@ -1,16 +1,20 @@
+{{- range index .Values "giropops-senhas" "ports" }}
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ index .Values "giropops-senhas" "name" }}
+  name: {{ .name }}
   labels:
-    app: giropops-senhas
+    app: {{ .name }}
 spec:
+  type: {{ .serviceType }}
+  ports:
+  - name: {{ .name }}
+    port: {{ .port }}
+{{- if eq .serviceType "NodePort" }}
+    nodePort: {{ .NodePort }}
+{{- end }}
+    targetPort: {{ .targetPort }}
   selector:
     app: giropops-senhas
-  type: {{ index .Values "giropops-senhas" "service" "type" }}
-  ports:
-    - protocol: TCP
-      nodePort: 32500
-      port: {{ index .Values "giropops-senhas" "service" "port" }}
-      targetPort: {{ index .Values "giropops-senhas" "service" "targetPort" }}
-      name: {{ index .Values "giropops-senhas" "service" "name" }}
+---
+{{- end }}
