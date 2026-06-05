@@ -19,47 +19,51 @@ helm uninstall giropops-senhas
 # helm create app-name generates a boilerplate for new helms
 ```
 
-## Exemplo didatico sobre range, fazendo o deploy do redis + app ao mesmo tempo
+## Explicacoes
+
+### Hyphen
 
 ```yaml
-{{- range $component, $config := .Values.deployments }}
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: {{ $component }}
-  labels:
-    app: {{ $config.labels.app }}
-spec:
-  replicas: {{ $config.replicas }}
-  selector:
-    matchLabels:
-      app: {{ $config.labels.app }}
-  template:
-    metadata:
-      labels:
-        app: {{ $config.labels.app }}
-    spec:
-      containers:
-      - name: {{ $component }}
-        image: {{ $config.image }}
-        ports:
-        {{- range $config.ports }}
-        - containerPort: {{ .port }}
-        {{- end }}
-        resources:
-          requests:
-            memory: {{ $config.resources.requests.memory }}
-            cpu: {{ $config.resources.requests.cpu }}
-          limits:
-            memory: {{ $config.resources.limits.memory }}
-            cpu: {{ $config.resources.limits.cpu }}
-{{- if $config.env }}
-        env:
-        {{- range $config.env }}
-        - name: {{ .name }}
-          value: {{ .value }}
-        {{- end }}
-{{- end }}
----
-{{- end }}
+ports:
+  {{ range .Values.ports }}
+  - containerPort: {{ . }}
+  {{ end }}
+
+# OUTPUT 
+# ports:
+#
+#   - containerPort: 80
+#
+#   - containerPort: 443
 ```
+
+```yaml
+ports:
+  {{- range .Values.ports }}
+  - containerPort: {{ . }}
+  {{- end }}
+# OUTPUT
+# ports:
+#   - containerPort: 80
+#   - containerPort: 443
+```
+
+### Separator
+
+```yaml
+# In Kubernetes, the triple dash --- is the official YAML stream separator. It tells the Kubernetes API (and Helm) that one
+# resource definition has ended, and a brand new one is beginning within the exact same file.
+{{- range $component, $config := .Values.services }}
+  {{ range $port := $config.ports }}
+apiVersion: v1
+kind: Service
+  # ...
+  selector:
+    app: {{ $config.labels.app }}
+---
+  {{ end }}
+{{- end }}
+
+```
+
+Vamos resolver, mas antes, vamos mudar um pouco a organização em nosso
