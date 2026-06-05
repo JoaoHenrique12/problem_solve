@@ -1,0 +1,11 @@
+{{- range $component, $config := .Values.observability }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ $component }}-observability-config
+data:
+# By putting the pipe | at the top, you are telling the YAML parser:
+# "Stop trying to read this as YAML. Just treat everything below me as a giant, dumb string of text."
+  app-config.json: | 
+    {{ toJson $config }}
+{{- end }}
